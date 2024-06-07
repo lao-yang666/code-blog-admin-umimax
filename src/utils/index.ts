@@ -1,9 +1,9 @@
 /*
  * @Description: 全局公共方法
  * @Version: 2.0
- * @Author: 白雾茫茫丶
+ * @Author: laoyang
  * @Date: 2022-09-07 16:12:53
- * @LastEditors: 白雾茫茫丶
+ * @LastEditors: laoyang
  * @LastEditTime: 2023-10-08 09:15:44
  */
 import type { ColumnsState, RequestData } from '@ant-design/pro-components';
@@ -18,7 +18,7 @@ import type { InitialStateTypes, LockSleepTypes, PageResponse, Response } from '
 
 /**
  * @description: 获取用户信息、菜单和权限
- * @author: 白雾茫茫丶
+ * @author: laoyang
  */
 export const initUserAuthority = async (): Promise<InitialStateTypes> => {
   try {
@@ -27,7 +27,7 @@ export const initUserAuthority = async (): Promise<InitialStateTypes> => {
       await Promise.all([getUserInfo(), getRoutesMenus(), getPermissions()])
     // 初始化全局状态
     return {
-      CurrentUser: get(userInfo, 'data', {}),
+      userInfo: get(userInfo, 'data', {}),
       RouteMenu: get(routeMenuInfo, 'data', []),
       Permissions: get(permissionInfo, 'data', []),
     }
@@ -39,13 +39,13 @@ export const initUserAuthority = async (): Promise<InitialStateTypes> => {
 
 /**
  * @description: 判断请求是否成功
- * @author: 白雾茫茫丶
+ * @author: laoyang
  */
 export const isSuccess = (code?: number): boolean => eq(code, REQUEST_CODE.SUCCESS)
 
 /**
  * @description: 格式化请求数据
- * @author: 白雾茫茫丶
+ * @author: laoyang
  */
 export const formatResponse = <T extends any[]>(
   response: Response<T> |
@@ -62,7 +62,7 @@ export const formatResponse = <T extends any[]>(
 
 /**
  * @description: 将 pathname 转成国际化对应的 key，如：/administrative/jobs-management => administrative.jobs-management
- * @author: 白雾茫茫丶
+ * @author: laoyang
  */
 export const formatPathName = (pathname: string): string => {
   return join(compact(pathname.split('/')), '.')
@@ -71,7 +71,7 @@ export const formatPathName = (pathname: string): string => {
 /**
  * @description: 统一国际化前缀
  * @param {boolean} isMenu
- * @Author: 白雾茫茫丶
+ * @Author: laoyang
  */
 export const formatPerfix = (route: string, suffix = '', isMenu = false): string => {
   // 国际化字符串
@@ -127,7 +127,7 @@ export const removeSessionStorageItem = (key: string) => {
 }
 /**
  * @description: 获取 localstorage 的值
- * @author: 白雾茫茫丶
+ * @author: laoyang
  */
 export const getLocalStorageItem = <T>(key: string): T | null => {
   // 获取 值
@@ -143,7 +143,7 @@ export const getLocalStorageItem = <T>(key: string): T | null => {
 
 /**
  * @description: 存储 localstorage 的值
- * @author: 白雾茫茫丶
+ * @author: laoyang
  */
 export const setLocalStorageItem = <T>(key: string, value: T) => {
   const result = JSON.stringify(value);
@@ -152,7 +152,7 @@ export const setLocalStorageItem = <T>(key: string, value: T) => {
 
 /**
  * @description: 移除 localstorage 的值
- * @author: 白雾茫茫丶
+ * @author: laoyang
  */
 export const removeLocalStorageItem = (key: string) => {
   localStorage.removeItem(key);
@@ -160,7 +160,7 @@ export const removeLocalStorageItem = (key: string) => {
 
 /**
  * @description: AES/DES密钥
- * @author: 白雾茫茫丶
+ * @author: laoyang
  */
 const CRYPTO_KEY = CryptoJS.enc.Utf8.parse('ABCDEF0123456789'); // 十六位十六进制数作为密钥
 const CRYPTO_IV = CryptoJS.enc.Utf8.parse('ABCDEF0123456789'); // 十六位十六进制数作为密钥偏移量
@@ -168,7 +168,7 @@ const CRYPTO_IV = CryptoJS.enc.Utf8.parse('ABCDEF0123456789'); // 十六位十�
 /**
  * @description: AES/DES加密
  * @param {string} password
- * @Author: 白雾茫茫丶
+ * @Author: laoyang
  */
 export const encryptionAesPsd = (password: string): string => {
   const encrypted = CryptoJS.AES.encrypt(password, CRYPTO_KEY, {
@@ -182,7 +182,7 @@ export const encryptionAesPsd = (password: string): string => {
 /**
  * @description: AES/DES解密
  * @param {string} password
- * @Author: 白雾茫茫丶
+ * @Author: laoyang
  */
 export const decryptionAesPsd = (password: string): string => {
   const decrypted = CryptoJS.AES.decrypt(password, CRYPTO_KEY, {
@@ -195,7 +195,7 @@ export const decryptionAesPsd = (password: string): string => {
 
 /**
  * @description: 退出登录返回到登录页
- * @Author: 白雾茫茫丶
+ * @Author: laoyang
  */
 export const logoutToLogin = () => {
   const { search, pathname } = window.location;
@@ -223,7 +223,7 @@ export const logoutToLogin = () => {
 
 /**
  * @description: 获取当前时间
- * @Author: 白雾茫茫丶
+ * @Author: laoyang
  */
 export const timeFix = (): string => {
   const time = new Date()
@@ -233,7 +233,7 @@ export const timeFix = (): string => {
 
 /**
  * @description: 随机欢迎语
- * @Author: 白雾茫茫丶
+ * @Author: laoyang
  */
 export const welcomeWords = (): string => {
   const words = ['休息一会儿吧', '准备吃什么呢?', '要不要打一把 LOL', '我猜你可能累了', '认真工作吧', '今天又是充满活力的一天']
@@ -243,7 +243,7 @@ export const welcomeWords = (): string => {
 /**
  * @description: 判断是否是HTTP或HTTPS链接
  * @param {string} link
- * @Author: 白雾茫茫丶
+ * @Author: laoyang
  */
 export const isHttpLink = (link: string): boolean => {
   const pattern = new RegExp('^(https?:\\/\\/)?' + // protocol  
@@ -258,7 +258,7 @@ export const isHttpLink = (link: string): boolean => {
 
 /**
  * @description: 默认不显示的 column 项
- * @author: 白雾茫茫丶
+ * @author: laoyang
  */
 export const renderColumnsStateMap = (MENU_CFG: string[] = []) => {
   const result: Record<string, ColumnsState> = {}
@@ -272,7 +272,7 @@ export const renderColumnsStateMap = (MENU_CFG: string[] = []) => {
 
 /**
  * @description: Tag 标签随机颜色
- * @author: 白雾茫茫丶
+ * @author: laoyang
  */
 export const randomTagColor = () => {
   const colors = ['magenta', 'red', 'volcano', 'orange', 'gold', 'lime', 'green', 'cyan', 'blue', 'geekblue', 'purple']

@@ -1,9 +1,9 @@
 /*
  * @Description: 锁定屏幕弹窗
  * @Version: 2.0
- * @Author: 白雾茫茫丶
+ * @Author: laoyang
  * @Date: 2023-01-11 11:18:51
- * @LastEditors: 白雾茫茫丶
+ * @LastEditors: laoyang
  * @LastEditTime: 2023-10-12 15:33:21
  */
 import { useIntl, useModel } from '@umijs/max'
@@ -65,7 +65,7 @@ const LockScreenModal: FC<LockScreenModalProps> = ({ open = false, setOpenFalse 
           <Col>
             <Avatar
               size={120}
-              src={initialState?.CurrentUser?.avatar_url}
+              src={initialState?.userInfo?.avatar_url}
             />
           </Col>
           <Col>

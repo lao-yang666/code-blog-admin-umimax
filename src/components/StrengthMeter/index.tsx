@@ -1,9 +1,9 @@
 /*
  * @Description: 密码强度校验组件
  * @Version: 2.0
- * @Author: 白雾茫茫丶
+ * @Author: laoyang
  * @Date: 2023-01-09 17:15:19
- * @LastEditors: 白雾茫茫丶
+ * @LastEditors: laoyang
  * @LastEditTime: 2023-09-14 09:40:25
  */
 import { ProFormText } from '@ant-design/pro-components';
@@ -28,7 +28,7 @@ const StrengthMeter: FC = () => {
   /**
    * @description: 监听密码强度相应变化
    * @param {string} password
-   * @author: 白雾茫茫丶
+   * @author: laoyang
    */
   const watchStrength = (password: string): number => {
     const analysisValue = zxcvbn(password)

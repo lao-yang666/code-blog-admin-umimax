@@ -1,11 +1,12 @@
 /*
  * @Description: 最新公告
  * @Version: 2.0
- * @Author: 白雾茫茫丶
+ * @Author: laoyang
  * @Date: 2023-10-11 09:48:13
- * @LastEditors: 白雾茫茫丶
+ * @LastEditors: laoyang
  * @LastEditTime: 2023-10-11 17:20:28
  */
+import { history } from '@umijs/max';
 import { useRequest } from 'ahooks'
 import { Avatar, Card, List, Tag } from 'antd'
 import { get } from 'lodash-es'
@@ -33,7 +34,7 @@ const HotPost: FC = () => {
           }</Tag>]}>
             <List.Item.Meta
               avatar={<Avatar src={record.avatar_url} />}
-              title={<a onClick={() => window.open(record.link)}>{record.title}</a>}
+              title={<a onClick={() => history.push(`/Post/PostDetail?id=${record.id}`)}>{record.title}</a>}
               description={record.author?.nickName}
             />
           </List.Item>

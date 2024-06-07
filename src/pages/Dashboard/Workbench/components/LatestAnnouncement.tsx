@@ -1,9 +1,9 @@
 /*
  * @Description: 最新公告
  * @Version: 2.0
- * @Author: 白雾茫茫丶
+ * @Author: laoyang
  * @Date: 2023-10-11 09:48:13
- * @LastEditors: 白雾茫茫丶
+ * @LastEditors: laoyang
  * @LastEditTime: 2023-10-11 17:20:28
  */
 import { useIntl } from '@umijs/max';
@@ -23,7 +23,7 @@ const LatestAnnouncement: FC = () => {
   const { formatMessage } = useIntl();
   /**
 * @description: 获取最新公告列表
-* @author: 白雾茫茫丶
+* @author: laoyang
 */
   const { data: announcementList, loading: announcementListLoading } = useRequest(
     async (params) => get(await getAnnouncementList(params), 'data.list', []), {

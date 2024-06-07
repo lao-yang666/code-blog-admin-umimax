@@ -1,9 +1,9 @@
 /*
  * @Description: 自定义多标签页
  * @Version: 2.0
- * @Author: 白雾茫茫丶
+ * @Author: laoyang
  * @Date: 2023-01-30 14:04:03
- * @LastEditors: 白雾茫茫丶
+ * @LastEditors: laoyang
  * @LastEditTime: 2023-10-25 15:35:42
  */
 import { PicCenterOutlined, ReloadOutlined, VerticalLeftOutlined, VerticalRightOutlined } from '@ant-design/icons'
@@ -41,6 +41,8 @@ const TabsLayout: FC<TabsLayoutProps> = ({
   refreshTab,
   activeKey,
 }) => {
+  console.log(keepElements,'uuuuu===');
+  
   const prefix = 'components.TabsLayout.'
   // 国际化工具
   const { formatMessage } = useIntl();
@@ -50,6 +52,7 @@ const TabsLayout: FC<TabsLayoutProps> = ({
    * @description: 点击菜单回调
    */
   const handleClickMenu = useCallback((key: string) => {
+    console.log(keepElements,'uuuuu===');
     const pathName = location.pathname?.toLowerCase();
     switch (key) {
       case TABSLAYOUT.REFRESH:

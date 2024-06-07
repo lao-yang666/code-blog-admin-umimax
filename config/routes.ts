@@ -19,16 +19,22 @@ export default [
     layout: false,
     component: './Login',
   },
-  // dashboard,
-  // administrative,
+    // administrative,
   // personalCenter,
   // technicalDocument,
+  // dashboard,
   // article,
   // setting,
   {
     path: '/',
     redirect: '/home',
   },
+  // {
+  //   path: '/home',
+  //   component: './Dashboard/Workbench',
+  //   access: 'adminRouteFilter',
+  //   key:'xxx'
+  // },
   {
     path: '*',
     layout: false,

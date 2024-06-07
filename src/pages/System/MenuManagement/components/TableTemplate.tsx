@@ -1,9 +1,9 @@
 /*
  * @Description: 菜单管理-表格列表
  * @Version: 2.0
- * @Author: 白雾茫茫丶
+ * @Author: laoyang
  * @Date: 2022-09-02 13:54:14
- * @LastEditors: 白雾茫茫丶
+ * @LastEditors: laoyang
  * @LastEditTime: 2023-09-28 17:42:57
  */
 import { ActionType, ColumnsState, ProColumns, ProTable } from '@ant-design/pro-components'
@@ -36,7 +36,7 @@ import FormTemplate from './FormTemplate' // 表单组件
 
 /**
  * @description: 默认不显示的 column 项
- * @author: 白雾茫茫丶
+ * @author: laoyang
  */
 const MENU_CFG = [
 	'redirect',
@@ -76,7 +76,7 @@ const TableTemplate: FC = () => {
 
 	/**
 	 * @description: 获取菜单列表
-	 * @author: 白雾茫茫丶
+	 * @author: laoyang
 	 */
 	const { data: menuTree, runAsync: fetchMenuList } = useRequest(
 		async (params) => formatResponse(await getMenuList(params)), {
@@ -85,7 +85,7 @@ const TableTemplate: FC = () => {
 
 	/**
 * @description: proTable columns 配置项
-* @author: 白雾茫茫丶
+* @author: laoyang
 */
 	const columns: ProColumns<API.MENUMANAGEMENT>[] = [
 		/* 菜单名称 */

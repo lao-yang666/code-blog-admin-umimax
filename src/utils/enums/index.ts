@@ -1,6 +1,6 @@
 /**
  * @description: 请求状态码
- * @author: 白雾茫茫丶
+ * @author: laoyang
  */
 export enum REQUEST_CODE {
   NOSUCCESS = -1, // 表示请求成功，但操作未成功
@@ -13,7 +13,7 @@ export enum REQUEST_CODE {
 
 /**
  * @description: 请求方式
- * @author: 白雾茫茫丶
+ * @author: laoyang
  */
 export enum REQUEST_METHODS {
   GET = 'GET',
@@ -25,7 +25,7 @@ export enum REQUEST_METHODS {
 
 /**
  * @description: 请求前缀
- * @author: 白雾茫茫丶
+ * @author: laoyang
  */
 export enum BASEURL {
   API = '/api',
@@ -35,7 +35,7 @@ export enum BASEURL {
 
 /**
  * @description: 存储在 localstorage 的 key
- * @author: 白雾茫茫丶
+ * @author: laoyang
  */
 export enum LOCAL_STORAGE {
   USER_INFO = 'USER_INFO', // 用户信息
@@ -47,7 +47,7 @@ export enum LOCAL_STORAGE {
 
 /**
  * @description: 菜单路由
- * @author: 白雾茫茫丶
+ * @author: laoyang
  */
 export enum ROUTES {
   LOGIN = '/login', // 登录页
@@ -67,7 +67,7 @@ export enum ROUTES {
 
 /**
  * @description: 公共国际化 key
- * @author: 白雾茫茫丶
+ * @author: laoyang
  */
 export enum INTERNATION {
   OPERATION = 'global.table.operation', // 操作
@@ -99,7 +99,7 @@ export enum INTERNATION {
 
 /**
  * @description: 表格下拉操作类型
- * @author: 白雾茫茫丶
+ * @author: laoyang
  */
 export enum OPERATION {
   ADD = 'add', // 新增
@@ -110,7 +110,7 @@ export enum OPERATION {
 
 /**
  * @description: 登录类型
- * @author: 白雾茫茫丶
+ * @author: laoyang
  */
 export enum LOGIN_TYPE {
   MOBILE = 'mobile', // 手机登录
@@ -119,7 +119,7 @@ export enum LOGIN_TYPE {
 
 /**
  * @description: 状态
- * @author: 白雾茫茫丶
+ * @author: laoyang
  */
 export enum STATUS {
   DISABLE, // 禁用
@@ -128,7 +128,7 @@ export enum STATUS {
 
 /**
  * @description: 是否
- * @author: 白雾茫茫丶
+ * @author: laoyang
  */
 export enum FLAG {
   NO, // 否
@@ -137,7 +137,7 @@ export enum FLAG {
 
 /**
  * @description: 性别
- * @author: 白雾茫茫丶
+ * @author: laoyang
  */
 export enum SEX {
   FEMALE = '0', // 女
@@ -147,7 +147,7 @@ export enum SEX {
 
 /**
  * @description: 消息类型
- * @author: 白雾茫茫丶
+ * @author: laoyang
  */
 export enum ANNOUNCEMENT_TYPE {
   ANNOUNCEMENT = '1', // 公告
@@ -158,7 +158,7 @@ export enum ANNOUNCEMENT_TYPE {
 
 /**
  * @description: 组织类型
- * @author: 白雾茫茫丶
+ * @author: laoyang
  */
 export enum ORG_TYPE {
   GROUP = 'group', // 集团
@@ -169,7 +169,7 @@ export enum ORG_TYPE {
 
 /**
  * @description: 菜单类型
- * @author: 白雾茫茫丶
+ * @author: laoyang
  */
 export enum MENU_TYPE {
   DIR = 'dir', // 目录
@@ -179,7 +179,7 @@ export enum MENU_TYPE {
 
 /**
  * @description: 窗口打开方式
- * @author: 白雾茫茫丶
+ * @author: laoyang
  */
 export enum TARGET_TYPE {
   BLANK = '_blank',
@@ -190,7 +190,7 @@ export enum TARGET_TYPE {
 
 /**
  * @description: 导航菜单的位置,side 为正常模式，top菜单显示在顶部，mix 两种兼有
- * @author: 白雾茫茫丶
+ * @author: laoyang
  */
 export enum LAYOUT_TYPE {
   SIDE = 'side', // 侧边菜单
@@ -200,7 +200,7 @@ export enum LAYOUT_TYPE {
 
 /**
  * @description: 主题风格
- * @author: 白雾茫茫丶
+ * @author: laoyang
  */
 export enum MENU_THEME {
   DARK = 'dark', // 暗黑风格
@@ -209,7 +209,7 @@ export enum MENU_THEME {
 
 /**
  * @description: 国际化语言
- * @author: 白雾茫茫丶
+ * @author: laoyang
  */
 export enum LANGS {
   CN = 'zh-CN', // 中文
@@ -220,7 +220,7 @@ export enum LANGS {
 
 /**
  * @description: EventBus type
- * @author: 白雾茫茫丶
+ * @author: laoyang
  */
 export enum EVENTBUS_TYPE {
   ANNOUNCEMENT = 'announcement-detail', // 查看公告详情
@@ -229,7 +229,7 @@ export enum EVENTBUS_TYPE {
 
 /**
  * @description: TabsLayout 多标签类型
- * @author: 白雾茫茫丶
+ * @author: laoyang
  */
 export enum TABSLAYOUT {
   CLOSE = 'close', // 关闭当前

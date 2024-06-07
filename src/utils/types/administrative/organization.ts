@@ -6,7 +6,7 @@ export type OrgTypes = EnumValues<typeof ORG_TYPE>
 
 /**
  * @description: 新增组织 Params
- * @author: 白雾茫茫丶
+ * @author: laoyang
  */
 export type CreateOrgParams = Pick<
   API.ORGANIZATION,
@@ -23,7 +23,7 @@ export type CreateOrgParams = Pick<
 
 /**
  * @description: FormTemplate Props
- * @Author: 白雾茫茫丶
+ * @Author: laoyang
  */
 export type FormTemplateProps = {
   treeData: API.ORGANIZATION[], // 组织树形数据
@@ -34,7 +34,7 @@ export type FormTemplateProps = {
 
 /**
  * @description: 头部搜索表单 Params
- * @author: 白雾茫茫丶
+ * @author: laoyang
  */
 export type SearchParams = Partial<
   Pick<API.ORGANIZATION, 'org_name' | 'org_code' | 'org_type' | 'status'>>

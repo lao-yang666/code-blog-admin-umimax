@@ -1,9 +1,9 @@
 /*
  * @Description: 接口数据类型定义
  * @Version: 2.0
- * @Author: 白雾茫茫丶
+ * @Author: laoyang
  * @Date: 2022-09-23 10:23:23
- * @LastEditors: 白雾茫茫丶
+ * @LastEditors: laoyang
  * @LastEditTime: 2023-10-07 14:24:23
  */
 
@@ -17,13 +17,13 @@ declare global {
 
     /**
    * @description: 国际化多语言层级对象
-   * @author: 白雾茫茫丶
+   * @author: laoyang
    */
     type LOCALESLANGAll = Record<Langs, string>
 
     /**
     * @description: 智能行政-组织管理
-    * @author: 白雾茫茫丶
+    * @author: laoyang
     */
     type ORGANIZATION = {
       org_id: string; // 组织id
@@ -36,7 +36,7 @@ declare global {
 
     /**
      * @description: 智能行政-岗位管理
-     * @author: 白雾茫茫丶
+     * @author: laoyang
      */
     type JOBSMANAGEMENT = TableTimes & {
       jobs_id: string; // 岗位id
@@ -47,7 +47,7 @@ declare global {
 
     /**
     * @description: 系统设置-菜单管理
-    * @author: 白雾茫茫丶
+    * @author: laoyang
     */
     type MENUMANAGEMENT = {
       menu_id: string; // 菜单id
@@ -78,7 +78,7 @@ declare global {
 
     /**
     * @description: 权限菜单
-    * @author: 白雾茫茫丶
+    * @author: laoyang
     */
     type PERMISSION = TableTimes & {
       permission_id: string; // 权限id
@@ -87,7 +87,7 @@ declare global {
 
     /**
        * @description: 系统设置-角色管理
-       * @author: 白雾茫茫丶
+       * @author: laoyang
        */
     type ROLEMANAGEMENT = {
       role_id: string; // 角色id
@@ -98,7 +98,7 @@ declare global {
 
     /**
      * @description: 系统设置-用户管理
-     * @author: 白雾茫茫丶
+     * @author: laoyang
      */
     type USERMANAGEMENT = TableTimes & {
       user_id: string; // 用户id
@@ -128,7 +128,7 @@ declare global {
 
     /**
      * @description: 智能行政-活动公告
-     * @author: 白雾茫茫丶
+     * @author: laoyang
      */
     type ANNOUNCEMENT = TableTimes & {
       announcement_id: string; // id 主键
@@ -142,7 +142,7 @@ declare global {
 
     /**
      * @description: 智能行政-活动公告-已读
-     * @author: 白雾茫茫丶
+     * @author: laoyang
      */
     type ALREADY = TableTimes & {
       id: string;
@@ -150,7 +150,7 @@ declare global {
 
     /**
      * @description: 系统设置-国际化
-     * @author: 白雾茫茫丶
+     * @author: laoyang
      */
     type INTERNATIONALIZATION = TableTimes & {
       id: string;
@@ -160,7 +160,7 @@ declare global {
 
     /**
    * @description: 系统设置-操作日志
-   * @author: 白雾茫茫丶
+   * @author: laoyang
    */
     type OPERATIONLOG = TableTimes & {
       log_id: string; // id

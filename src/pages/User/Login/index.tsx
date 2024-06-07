@@ -1,9 +1,9 @@
 /*
  * @Description: 登录页
  * @Version: 2.0
- * @Author: 白雾茫茫丶
+ * @Author: laoyang
  * @Date: 2022-09-08 11:09:03
- * @LastEditors: 白雾茫茫丶
+ * @LastEditors: laoyang
  * @LastEditTime: 2023-10-17 13:51:38
  */
 
@@ -38,7 +38,7 @@ const LoginPage: FC = () => {
   const [loginType, setLoginType] = useState<LoginType>(LOGIN_TYPE.ACCOUNT);
   /**
    * @description: 用户登录接口
-   * @Author: 白雾茫茫丶
+   * @Author: laoyang
    */
   const { run: runLogin, loading: loginLoading } = useRequest(async (params) => await Login(params),
     {
@@ -59,7 +59,7 @@ const LoginPage: FC = () => {
                 history.push(urlParams.get('redirect') || '/login');
                 // 欢迎语
                 notification.success({
-                  message: `${timeFix()}，${result?.CurrentUser?.cn_name} 💕`,
+                  message: `${timeFix()}，${result?.userInfo?.cn_name} 💕`,
                   description: login_last_time ?
                     <span>
                       {formatMessage({ id: formatPerfix(ROUTES.LOGIN, 'success.last-time') })}
@@ -85,7 +85,7 @@ const LoginPage: FC = () => {
   /**
    * @description: 登录表单提交
    * @param {LoginParams} values
-   * @Author: 白雾茫茫丶
+   * @Author: laoyang
    */
   const { run: handleSubmit } = useDebounceFn(
     async (values: LoginParams): Promise<void> => {
@@ -112,7 +112,7 @@ const LoginPage: FC = () => {
 
   /**
    * @description: Tabs 标签页配置
-   * @Author: 白雾茫茫丶
+   * @Author: laoyang
    */
   const TbasItems: TabsProps['items'] = [
     {

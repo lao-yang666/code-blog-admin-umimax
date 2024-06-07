@@ -1,9 +1,9 @@
 /*
  * @Description: 用户管理-表格列表
  * @Version: 2.0
- * @Author: 白雾茫茫丶
+ * @Author: laoyang
  * @Date: 2022-09-02 13:54:14
- * @LastEditors: 白雾茫茫丶
+ * @LastEditors: laoyang
  * @LastEditTime: 2023-10-07 10:01:29
  */
 import { ManOutlined, UnlockOutlined, UserOutlined, WomanOutlined } from '@ant-design/icons'
@@ -64,7 +64,7 @@ const TableTemplate: FC = () => {
 
 	/**
 	 * @description: 获取用户管理列表
-	 * @author: 白雾茫茫丶
+	 * @author: laoyang
 	 */
 	const { runAsync: fetchUserList } = useRequest(
 		async (params) => formatResponse(await getUserList(params)), {
@@ -104,7 +104,7 @@ const TableTemplate: FC = () => {
 
 	/**
 * @description: proTable columns 配置项
-* @author: 白雾茫茫丶
+* @author: laoyang
 */
 	const columns: ProColumns<API.USERMANAGEMENT>[] = [
 		{

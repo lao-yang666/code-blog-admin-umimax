@@ -1,9 +1,9 @@
 /*
  * @Description: 人物标签
  * @Version: 2.0
- * @Author: 白雾茫茫丶
+ * @Author: laoyang
  * @Date: 2022-10-09 10:38:10
- * @LastEditors: 白雾茫茫丶
+ * @LastEditors: laoyang
  * @LastEditTime: 2023-10-17 13:47:26
  */
 import { PlusOutlined } from '@ant-design/icons';
@@ -44,7 +44,7 @@ const FigureLabels: FC<IProps> = ({ value, onChange, canCallback }) => {
 
 	/**
  * @description: 更新用户信息
- * @author: 白雾茫茫丶
+ * @author: laoyang
  */
 	const { run: runUpdateUser } = useRequest(updateUser, {
 		manual: true,
@@ -52,9 +52,9 @@ const FigureLabels: FC<IProps> = ({ value, onChange, canCallback }) => {
 			if (isSuccess(code)) {
 				message.success(msg)
 				// 更新全局状态
-				if (params[0]?.tags && initialState?.CurrentUser?.user_id) {
+				if (params[0]?.tags && initialState?.userInfo?.user_id) {
 					setInitialState((s: InitialStateTypes) => ({
-						...s, CurrentUser: { ...initialState?.CurrentUser, tags: params[0]?.tags },
+						...s, userInfo: { ...initialState?.userInfo, tags: params[0]?.tags },
 					}));
 				}
 			}
@@ -94,7 +94,7 @@ const FigureLabels: FC<IProps> = ({ value, onChange, canCallback }) => {
 		triggerChange(newTags)
 		// 判断是否需要更新用户信息
 		if (canCallback) {
-			const user_id = initialState?.CurrentUser?.user_id
+			const user_id = initialState?.userInfo?.user_id
 			if (user_id) {
 				runUpdateUser({ tags: newTags, user_id })
 			}
@@ -109,7 +109,7 @@ const FigureLabels: FC<IProps> = ({ value, onChange, canCallback }) => {
 			triggerChange([...tags, inputValue])
 			// 判断是否需要更新用户信息
 			if (canCallback) {
-				const user_id = initialState?.CurrentUser?.user_id
+				const user_id = initialState?.userInfo?.user_id
 				if (user_id) {
 					runUpdateUser({ tags: [...tags, inputValue], user_id })
 				}

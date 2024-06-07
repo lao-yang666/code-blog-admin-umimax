@@ -1,9 +1,9 @@
 /*
  * @Description: 角色管理-表格列表
  * @Version: 2.0
- * @Author: 白雾茫茫丶
+ * @Author: laoyang
  * @Date: 2022-09-02 13:54:14
- * @LastEditors: 白雾茫茫丶
+ * @LastEditors: laoyang
  * @LastEditTime: 2023-09-26 14:36:02
  */
 import { ActionType, ProColumns, ProTable } from '@ant-design/pro-components'
@@ -56,7 +56,7 @@ const TableTemplate: FC = () => {
 
 	/**
 	 * @description: 获取角色管理列表
-	 * @author: 白雾茫茫丶
+	 * @author: laoyang
 	 */
 	const { runAsync: fetchRoleList } = useRequest(
 		async (params) => formatResponse(await getRoleList(params)), {
@@ -97,7 +97,7 @@ const TableTemplate: FC = () => {
 	/**
 * @description: proTable columns 配置项
 * @return {*}
-* @author: 白雾茫茫丶
+* @author: laoyang
 */
 	const columns: ProColumns<API.ROLEMANAGEMENT>[] = [
 		{

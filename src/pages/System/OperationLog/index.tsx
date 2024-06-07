@@ -1,9 +1,9 @@
 /*
  * @Description: 系统设置-操作日志
  * @Version: 2.0
- * @Author: 白雾茫茫丶
+ * @Author: laoyang
  * @Date: 2022-09-02 14:07:00
- * @LastEditors: 白雾茫茫丶
+ * @LastEditors: laoyang
  * @LastEditTime: 2023-09-22 14:24:45
  */
 import { PageContainer, ProColumns, ProTable } from '@ant-design/pro-components'
@@ -23,7 +23,7 @@ const OperationLog: FC = () => {
 
 	/**
 	 * @description: 获取操作日志列表
-	 * @author: 白雾茫茫丶
+	 * @author: laoyang
 	 */
 	const { runAsync: fetchOperationLogList } = useRequest(
 		async (params) => formatResponse(await getOperationLogList(params)), {
@@ -33,7 +33,7 @@ const OperationLog: FC = () => {
 
 	/**
 	* @description: proTable columns 配置项
-	* @author: 白雾茫茫丶
+	* @author: laoyang
 	*/
 	const columns: ProColumns<API.OPERATIONLOG>[] = [
 		{

@@ -1,9 +1,9 @@
 /*
  * @Description: 全屏
  * @Version: 2.0
- * @Author: 白雾茫茫丶
+ * @Author: laoyang
  * @Date: 2023-01-03 15:46:18
- * @LastEditors: 白雾茫茫丶
+ * @LastEditors: laoyang
  * @LastEditTime: 2023-09-14 15:55:17
  */
 import { FullscreenExitOutlined, FullscreenOutlined } from '@ant-design/icons'

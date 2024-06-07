@@ -5,7 +5,7 @@ import type { PaginationParams, SearchTimes } from '@/utils/types'
 
 /**
  * @description: FormTemplate Props
- * @Author: 白雾茫茫丶
+ * @Author: laoyang
  */
 export type FormTemplateProps = {
   reloadTable: () => void;
@@ -16,7 +16,7 @@ export type FormTemplateProps = {
 
 /**
  * @description: UserInformation Props
- * @author: 白雾茫茫丶
+ * @author: laoyang
  */
 export type UserInformationProps = {
   showLabel?: boolean;
@@ -25,13 +25,13 @@ export type UserInformationProps = {
 
 /**
  * @description: 头部搜索表单 Params
- * @author: 白雾茫茫丶
+ * @author: laoyang
  */
 export type SearchParams = PaginationParams & SearchTimes &
   Partial<Pick<API.USERMANAGEMENT, 'user_name' | 'sex' | 'status'>>
 
 /**
  * @description: 设置用户状态 Props
- * @author: 白雾茫茫丶
+ * @author: laoyang
  */
 export type UserStatusProps = Pick<API.USERMANAGEMENT, 'user_id' | 'status'>

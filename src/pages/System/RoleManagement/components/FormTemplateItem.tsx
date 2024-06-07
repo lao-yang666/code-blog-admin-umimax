@@ -1,9 +1,9 @@
 /*
  * @Description: 表单配置项
  * @Version: 2.0
- * @Author: 白雾茫茫丶
+ * @Author: laoyang
  * @Date: 2022-09-13 14:05:54
- * @LastEditors: 白雾茫茫丶
+ * @LastEditors: laoyang
  * @LastEditTime: 2023-09-22 14:43:45
  */
 import { ProFormText, ProFormTreeSelect } from '@ant-design/pro-components';
@@ -22,7 +22,7 @@ const FormTemplateItem: FC = () => {
 	const { formatMessage } = useIntl();
 	/**
 	 * @description: 获取当前菜单数据
-	 * @author: 白雾茫茫丶
+	 * @author: laoyang
 	 */
 	const { data: menuData } = useRequest(async (params) => get(await getMenuList(params), 'data', []), {
 		defaultParams: [{ isPremission: true }],

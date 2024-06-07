@@ -1,9 +1,9 @@
 /*
  * @Description: 新建表单
  * @Version: 2.0
- * @Author: 白雾茫茫丶
+ * @Author: laoyang
  * @Date: 2022-09-13 11:33:11
- * @LastEditors: 白雾茫茫丶
+ * @LastEditors: laoyang
  * @LastEditTime: 2023-10-08 09:14:38
  */
 import { StepsForm } from '@ant-design/pro-components';
@@ -53,7 +53,7 @@ const FormTemplate: FC<FormTemplateProps> = ({
 
 	/**
 	 * @description: 分步组件对应的组件
-	 * @author: 白雾茫茫丶
+	 * @author: laoyang
 	 */
 	const StepComponents = [
 		// 个人信息

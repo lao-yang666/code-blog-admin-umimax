@@ -1,9 +1,9 @@
 /*
  * @Description: 表单公告项
  * @Version: 2.0
- * @Author: 白雾茫茫丶
+ * @Author: laoyang
  * @Date: 2023-09-19 17:06:11
- * @LastEditors: 白雾茫茫丶
+ * @LastEditors: laoyang
  * @LastEditTime: 2023-09-25 13:54:58
  */
 import {
@@ -27,7 +27,7 @@ import { INTERNATION, STATUS } from '@/utils/enums'
 
 /**
  * @description: 父级
- * @author: 白雾茫茫丶
+ * @author: laoyang
  */
 export const ProFormParent: typeof ProFormTreeSelect = ({ fieldProps, ...props }) => {
   const { formatMessage } = useIntl();
@@ -53,7 +53,7 @@ export const ProFormParent: typeof ProFormTreeSelect = ({ fieldProps, ...props }
 
 /**
  * @description: 状态
- * @author: 白雾茫茫丶
+ * @author: laoyang
  */
 export const ProFormStatus: FC<ProFormRadioGroupProps> = (props) => {
   const { formatMessage } = useIntl();
@@ -74,13 +74,13 @@ export const ProFormStatus: FC<ProFormRadioGroupProps> = (props) => {
 
 /**
  * @description: 负责人
- * @author: 白雾茫茫丶
+ * @author: laoyang
  */
 export const ProFormLeader: FC = () => {
   const { formatMessage } = useIntl();
   /**
    * @description: 获取用户列表
-   * @author: 白雾茫茫丶
+   * @author: laoyang
    */
   const { data: userList } = useRequest(async (params) => get(await getUserList(params), 'data.list', []), {
     defaultParams: [{ current: 1, pageSize: 9999 }],
@@ -106,7 +106,7 @@ export const ProFormLeader: FC = () => {
 
 /**
  * @description: 排序
- * @author: 白雾茫茫丶
+ * @author: laoyang
  */
 export const ProFormSort: FC<ProFormDigitProps> = (props) => {
   const { formatMessage } = useIntl();
@@ -129,7 +129,7 @@ export const ProFormSort: FC<ProFormDigitProps> = (props) => {
 
 /**
  * @description: 描述
- * @author: 白雾茫茫丶
+ * @author: laoyang
  */
 export const ProFormDescribe: FC = () => {
   const { formatMessage } = useIntl();

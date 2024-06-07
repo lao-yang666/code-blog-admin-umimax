@@ -1,41 +1,37 @@
 /*
  * @Description: 入口文件-全局 layout 配置
  * @Version: 2.0
- * @Author: 白雾茫茫丶
+ * @Author: laoyang
  * @Date: 2022-09-19 20:39:53
- * @LastEditors: 白雾茫茫丶
+ * @LastEditors: laoyang
  * @LastEditTime: 2023-10-19 15:47:21
  */
 import { ProConfigProvider, SettingDrawer, Settings as LayoutSettings } from '@ant-design/pro-components';
 import { history, InitDataType, Link, RunTimeLayoutConfig } from '@umijs/max';
 import { useBoolean } from 'ahooks'
 import { Space, Typography } from 'antd'
-import { eq, last, toString } from 'lodash-es'
+import { eq, last } from 'lodash-es'
 
 import Footer from '@/components/Footer'; // 全局底部版权组件
 import { getLocalStorageItem, getToken, setLocalStorageItem } from '@/utils'
 import { IconFont } from '@/utils/const'
 import { LOCAL_STORAGE, ROUTES } from '@/utils/enums'
+import { getMenuListByRoutes } from '@/utils/route';
 import type { InitialStateTypes } from '@/utils/types'
 
 import {
 	ActionButtons,
 	actionsRender,
-	AnnouncementDetail,
 	appList, avatarProps,
-	EventSourceNotice,
 	LockScreenModal,
-	LockSleep
+	LockSleep,
 } from './components'
-import { getMenuListByRoutes } from '@/utils/route';
 
 const { Paragraph } = Typography;
 
 export const BasiLayout: RunTimeLayoutConfig = ({ initialState, setInitialState }: InitDataType) => {
 	/* 获取 LAYOUT 的值 */
 	const LAYOUT = getLocalStorageItem<LayoutSettings>(LOCAL_STORAGE.LAYOUT)
-	// 获取 ACCESS_TOKEN
-	const ACCESS_TOKEN = getLocalStorageItem<string>(LOCAL_STORAGE.ACCESS_TOKEN)
 
 	const TOKEN = getToken()
 	/* 是否显示锁屏弹窗 */
@@ -46,14 +42,14 @@ export const BasiLayout: RunTimeLayoutConfig = ({ initialState, setInitialState 
 		iconfontUrl: process.env.ICONFONT_URL,
 		/* 水印 */
 		waterMarkProps: {
-			content: initialState?.userInfo?.nickName,
+			content: initialState?.userInfo?.id,
 		},
 		/* 用户头像 */
 		avatarProps: avatarProps(setLockModalTrue),
 		/* 自定义操作列表 */
 		actionsRender,
 		/* 底部版权 */
-		footerRender: () => <Footer />,
+		// footerRender: () => <Footer />,
 		/* 页面切换时触发 */
 		onPageChange: (location) => {
 			// 如果没有登录，重定向到 login
@@ -61,34 +57,32 @@ export const BasiLayout: RunTimeLayoutConfig = ({ initialState, setInitialState 
 				history.push(ROUTES.LOGIN);
 			}
 		},
-		// menu: {
-		// 	params: initialState?.CurrentRoleId,
-		// 	request: async () => {
-		// 		console.log(getMenuListByRoutes(initialState?.MenuData ?? [], initialState?.menuViewIds), '=====xxx====', initialState?.MenuData);
-
-		// 		return getMenuListByRoutes(initialState?.MenuData ?? [], initialState?.menuViewIds)
-		// 	},
-		// },
-		/* 自定义面包屑 */
-		breadcrumbProps: {
-			itemRender: (route) => {
-				return (
-					<Space>
-						<IconFont type={`icon-${last(route.linkPath.split('/'))}`} />
-						<span>{route.breadcrumbName}</span>
-					</Space>
-				)
+		menu: {
+			params: initialState?.CurrentRoleId,
+			request: async () => {
+				return getMenuListByRoutes(initialState?.MenuData ?? [])
 			},
 		},
+		/* 自定义面包屑 */
+		// breadcrumbProps: {
+		// 	itemRender: (route) => {
+		// 		return (
+		// 			<Space>
+		// 				<IconFont type={`icon-${last(route.linkPath.split('/'))}`} />
+		// 				<span>{route.breadcrumbName}</span>
+		// 			</Space>
+		// 		)
+		// 	},
+		// },
 		/* 自定义菜单项的 render 方法 */
 		menuItemRender: (menuItemProps, defaultDom) => {
 			const renderMenuDom = () => {
 				return (
 					<Space>
 						{/* 分组布局不用渲染图标，避免重复 */}
-						{/* {!(LAYOUT?.siderMenuType === 'group') &&
+						{!(LAYOUT?.siderMenuType === 'group') &&
 							menuItemProps.pro_layout_parentKeys?.length &&
-							<IconFont type={toString(menuItemProps.icon)} />} */}
+							<IconFont type={toString(menuItemProps.icon)} />}
 						<Paragraph
 							ellipsis={{ rows: 1, tooltip: defaultDom }}
 							style={{ marginBottom: 0 }}>
@@ -124,10 +118,8 @@ export const BasiLayout: RunTimeLayoutConfig = ({ initialState, setInitialState 
 						<LockScreenModal open={openLockModal} setOpenFalse={setLockModalFalse} />
 						{/* 睡眠弹窗 */}
 						<LockSleep />
-						{/* 公告详情 */}
-						<AnnouncementDetail />
-						{/* 消息通知 */}
-						<EventSourceNotice />
+						{/* 公告详情 	<AnnouncementDetail />*/}
+						{/* 消息通知 	<EventSourceNotice />*/}
 						{/* 全局通用按钮 */}
 						<ActionButtons />
 						{/* 工具栏 */}

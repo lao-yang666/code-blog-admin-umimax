@@ -1,9 +1,9 @@
 /*
  * @Description: 表单配置项
  * @Version: 2.0
- * @Author: 白雾茫茫丶
+ * @Author: laoyang
  * @Date: 2022-09-13 14:05:54
- * @LastEditors: 白雾茫茫丶
+ * @LastEditors: laoyang
  * @LastEditTime: 2023-09-26 16:20:24
  */
 import {
@@ -35,7 +35,7 @@ const UserInformation: FC<UserInformationProps> = ({
 
 	/**
 	 * @description: 获取角色列表
-	 * @author: 白雾茫茫丶
+	 * @author: laoyang
 	 */
 	const { data: roleList } = useRequest(async (params) => get(await getRoleList(params), 'data.list', []), {
 		defaultParams: [{ current: 1, pageSize: 9999 }],
@@ -43,13 +43,13 @@ const UserInformation: FC<UserInformationProps> = ({
 
 	/**
 	 * @description: 获取岗位列表
-	 * @author: 白雾茫茫丶
+	 * @author: laoyang
 	 */
 	const { data: jobsTree } = useRequest(async () => get(await getJobsList(), 'data', []))
 
 	/**
 	 * @description: 获取组织列表
-	 * @author: 白雾茫茫丶
+	 * @author: laoyang
 	 */
 	const { data: orgTree } = useRequest(async () => get(await getOrganizationList(), 'data', []))
 

@@ -1,9 +1,9 @@
 /*
  * @Description: 睡眠弹窗
  * @Version: 2.0
- * @Author: 白雾茫茫丶
+ * @Author: laoyang
  * @Date: 2023-01-06 16:40:34
- * @LastEditors: 白雾茫茫丶
+ * @LastEditors: laoyang
  * @LastEditTime: 2023-10-17 13:46:32
  */
 import { useIntl, useModel } from '@umijs/max'
@@ -44,7 +44,7 @@ const LockSleep: FC = () => {
   const hanlderSubmit = () => {
     // 触发表单校验
     form.validateFields().then((values: { password: string }) => {
-      if (LOCK_SLEEP && initialState?.CurrentUser?.password === encryptionAesPsd(values.password)) {
+      if (LOCK_SLEEP && initialState?.userInfo?.password === encryptionAesPsd(values.password)) {
         setFalse()
         setLocalStorageItem(LOCAL_STORAGE.LOCK_SLEEP, { ...LOCK_SLEEP, isSleep: false })
       } else {
@@ -90,7 +90,7 @@ const LockSleep: FC = () => {
         <Col>
           <Avatar
             size={120}
-            src={initialState?.CurrentUser?.avatar_url}
+            src={initialState?.userInfo?.avatar_url}
           />
         </Col>
         <Col>

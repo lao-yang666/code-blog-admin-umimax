@@ -8,7 +8,7 @@ const baseURL = ROUTES.OPERATIONLOG
 /**
  * @description: 操作日志列表
  * @param {SearchParams} options
- * @Author: 白雾茫茫丶
+ * @Author: laoyang
  */
 export const getOperationLogList = (options?: SearchTimes) =>
   httpRequest.get<PageResponse<API.OPERATIONLOG>>(`${baseURL}`, options);

@@ -1,9 +1,9 @@
 /*
  * @Description: 表单配置项
  * @Version: 2.0
- * @Author: 白雾茫茫丶
+ * @Author: laoyang
  * @Date: 2022-09-13 14:05:54
- * @LastEditors: 白雾茫茫丶
+ * @LastEditors: laoyang
  * @LastEditTime: 2023-09-26 09:14:04
  */
 import { ProFormDependency, ProFormRadio, ProFormText, ProFormTreeSelect } from '@ant-design/pro-components';
@@ -32,7 +32,7 @@ const FormTemplateItem: FC<Pick<FormTemplateProps, 'treeData'>> = ({ treeData })
 	const { parent_id, name } = form.getFieldsValue(true)
 	/**
 	 * @description: 获取国际化列表
-	 * @author: 白雾茫茫丶
+	 * @author: laoyang
 	 */
 	const { data: internationalData } = useRequest(
 		async () => get(await getInternationalList({ isMenu: true }), 'data', []))

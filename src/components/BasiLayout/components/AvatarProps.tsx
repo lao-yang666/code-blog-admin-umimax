@@ -1,9 +1,9 @@
 /*
  * @Description: 用户头像
  * @Version: 2.0
- * @Author: 白雾茫茫丶
+ * @Author: laoyang
  * @Date: 2023-09-14 14:51:38
- * @LastEditors: 白雾茫茫丶
+ * @LastEditors: laoyang
  * @LastEditTime: 2023-10-17 11:19:56
  */
 import { LockOutlined, PoweroffOutlined } from '@ant-design/icons';
@@ -28,13 +28,13 @@ export default function AvatarProps(openLockScreen: () => void): HeaderProps['av
   const { initialState, setInitialState } = useModel('@@initialState');
   /**
 * @description: 退出登录，并且将当前的 url 保存
-* @author: 白雾茫茫丶
+* @author: laoyang
 */
   const { run: loginOut } = useRequest(Logout, {
     manual: true,
     onSuccess: async ({ code }) => {
       if (isSuccess(code)) {
-        setInitialState((s: InitialStateTypes) => ({ ...s, CurrentUser: undefined, Access_token: undefined }));
+        setInitialState((s: InitialStateTypes) => ({ ...s, userInfo: undefined, Access_token: undefined }));
         removeLocalStorageItem(LOCAL_STORAGE.ACCESS_TOKEN)
         // 退出登录返回登录页
         logoutToLogin()
@@ -44,7 +44,7 @@ export default function AvatarProps(openLockScreen: () => void): HeaderProps['av
   )
   /**
    * @description: 退出登录
-   * @author: 白雾茫茫丶
+   * @author: laoyang
    */
   const logOutClick = () => {
     modal.confirm({
@@ -74,7 +74,7 @@ export default function AvatarProps(openLockScreen: () => void): HeaderProps['av
   }
   /**
    * @description: 用户下拉菜单
-   * @author: 白雾茫茫丶
+   * @author: laoyang
    */
   const menuItems: MenuProps['items'] = [
     {

@@ -162,15 +162,13 @@ export const getRoutes = (menus: API.Menu[] | undefined): any => {
 }
 
 
-export const formatRoute = (menu: API.Menu, ids: number[] = []): any => {
-  console.log(menu,ids,'xxxxxx');
-  
+export const formatRoute = (menu: API.Menu): any => {
   return {
     path: menu.path,
     name: menu.name,
     icon: menu.icon,
     menu_id: menu.menu_id,
-    hasAccess: ids.includes(menu.menu_id),
+    access: 'adminRouteFilter',
     wrappers: [
       '@/wrappers/auth',
     ],
@@ -181,11 +179,11 @@ export const formatRoute = (menu: API.Menu, ids: number[] = []): any => {
 }
 
 
-export const getMenuListByRoutes = (routes: API.Menu[], ids: number[] = []): any[] => {
+export const getMenuListByRoutes = (routes: API.Menu[]): any[] => {
   return routes.map(({ children, ...item }) => {
     return {
-      ...formatRoute(item, ids),
-      routes: children ? getMenuListByRoutes(children, ids) : [],
+      ...formatRoute(item),
+      routes: children ? getMenuListByRoutes(children) : [],
     }
   })
 }

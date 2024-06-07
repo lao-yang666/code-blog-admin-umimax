@@ -1,9 +1,9 @@
 /*
  * @Description: 全局常量数据
  * @Version: 2.0
- * @Author: 白雾茫茫丶
+ * @Author: laoyang
  * @Date: 2023-09-06 13:37:18
- * @LastEditors: 白雾茫茫丶
+ * @LastEditors: laoyang
  * @LastEditTime: 2023-09-26 09:30:28
  */
 import { createFromIconfontCN } from '@ant-design/icons'
@@ -38,7 +38,7 @@ import type { MenuTypes } from '@/utils/types/system/menu-management'
 
 /**
  * @description: 使用 iconfont.cn 资源
- * @author: 白雾茫茫丶
+ * @author: laoyang
  */
 export const IconFont = createFromIconfontCN({
   scriptUrl: process.env.ICONFONT_URL,
@@ -46,7 +46,7 @@ export const IconFont = createFromIconfontCN({
 
 /**
  * @description: antd 多语言配置项
- * @author: 白雾茫茫丶
+ * @author: laoyang
  */
 export const ANTD_LANGS: Record<Langs, { momentLocale: string, antd: Locale }> = {
   [LANGS.CN]: {
@@ -69,7 +69,7 @@ export const ANTD_LANGS: Record<Langs, { momentLocale: string, antd: Locale }> =
 
 /**
  * @description: 状态
- * @author: 白雾茫茫丶
+ * @author: laoyang
  */
 export const STATUS_OPTS: LabeledValue[] = [
   {
@@ -84,7 +84,7 @@ export const STATUS_OPTS: LabeledValue[] = [
 
 /**
  * @description: 是否
- * @author: 白雾茫茫丶
+ * @author: laoyang
  */
 export const FLAG_OPTS: LabeledValue[] = [
   {
@@ -99,7 +99,7 @@ export const FLAG_OPTS: LabeledValue[] = [
 
 /**
  * @description: 性别
- * @author: 白雾茫茫丶
+ * @author: laoyang
  */
 export const SEX_OPTS: LabeledValue[] = [
   {
@@ -118,7 +118,7 @@ export const SEX_OPTS: LabeledValue[] = [
 
 /**
  * @description: 消息类型
- * @author: 白雾茫茫丶
+ * @author: laoyang
  */
 export const AnnouncementTypeEnum: Record<AnnouncementType, string> = {
   [ANNOUNCEMENT_TYPE.ANNOUNCEMENT]: 'announcement',
@@ -129,7 +129,7 @@ export const AnnouncementTypeEnum: Record<AnnouncementType, string> = {
 
 /**
  * @description: 组织类型
- * @author: 白雾茫茫丶
+ * @author: laoyang
  */
 export const OrgTypeEnum: Record<OrgTypes, string> = {
   [ORG_TYPE.GROUP]: 'group',
@@ -140,7 +140,7 @@ export const OrgTypeEnum: Record<OrgTypes, string> = {
 
 /**
  * @description: 菜单类型配置项
- * @author: 白雾茫茫丶
+ * @author: laoyang
  */
 export const MenuTypeEnum: Record<MenuTypes, string> = {
   [MENU_TYPE.DIR]: 'dir',
@@ -150,7 +150,7 @@ export const MenuTypeEnum: Record<MenuTypes, string> = {
 
 /**
  * @description: 窗口打开方式
- * @author: 白雾茫茫丶
+ * @author: laoyang
  */
 export const TARGET_TYPE_OPTS: LabeledValue[] = keys(TARGET_TYPE).map((key: EnumKeys<typeof TARGET_TYPE>) => (
   { value: TARGET_TYPE[key], label: TARGET_TYPE[key] }
@@ -158,7 +158,7 @@ export const TARGET_TYPE_OPTS: LabeledValue[] = keys(TARGET_TYPE).map((key: Enum
 
 /**
  * @description: 导航菜单的位置,side 为正常模式，top菜单显示在顶部，mix 两种兼有
- * @author: 白雾茫茫丶
+ * @author: laoyang
  */
 export const LAYOUT_TYPE_OPTS: LabeledValue[] = keys(LAYOUT_TYPE).map((key: EnumKeys<typeof LAYOUT_TYPE>) => (
   {
@@ -169,7 +169,7 @@ export const LAYOUT_TYPE_OPTS: LabeledValue[] = keys(LAYOUT_TYPE).map((key: Enum
 
 /**
  * @description: 导航菜单的主题
- * @author: 白雾茫茫丶
+ * @author: laoyang
  */
 export const NAV_THEME_OPTS: LabeledValue[] = keys(MENU_THEME).map((key: EnumKeys<typeof MENU_THEME>) => (
   {

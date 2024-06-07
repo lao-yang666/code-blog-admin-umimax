@@ -8,6 +8,7 @@ import { Button, Input, message } from 'antd';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import styled from 'styled-components'
 
+import socket from '@/utils/socket';
 const Div = styled.div`
   display:flex;
   justify-content:space-between;
@@ -67,13 +68,12 @@ const PostAdd: React.FC<unknown> = () => {
     try {
       await modifyDraft({ id: postId }, {
         title, content: mdValue, id: Number(postId),
-        published: true, postId: postDetailId ? Number(postDetailId) : undefined
+        published: true, postId: postDetailId ? Number(postDetailId) : undefined,
       });
       hide();
       message.success(`${btnText}成功`);
-      setTimeout(() => {
-        handleBack();
-      }, 500)
+      handleBack();
+      socket.emit('addPost', { postId: Number(postId), title });
     } catch (error) {
       hide();
       message.error(`${btnText}失败请重试！`);
@@ -91,13 +91,13 @@ const PostAdd: React.FC<unknown> = () => {
       if (postId) {
         await modifyDraft({ id: postId }, {
           title: mdInfoRef.current.title,
-          content: mdInfoRef.current.content, id: Number(postId)
+          content: mdInfoRef.current.content, id: Number(postId),
         });
         return true;
       }
       const { data } = await addDraft({
         title, content: mdInfoRef.current.content,
-        authorId: initialState?.userInfo?.id, postId: postId ? Number(postId) : undefined
+        authorId: initialState?.userInfo?.id, postId: postId ? Number(postId) : undefined,
       });
       setSearchParams({ id: data?.id });
       return true;

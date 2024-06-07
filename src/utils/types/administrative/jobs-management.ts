@@ -1,22 +1,22 @@
 /*
  * @Version: 2.0
- * @Author: 白雾茫茫丶
+ * @Author: laoyang
  * @Date: 2022-09-24 08:58:15
- * @LastEditors: 白雾茫茫丶
+ * @LastEditors: laoyang
  * @LastEditTime: 2023-09-15 10:52:01
  */
 import type { SearchTimes } from '@/utils/types'
 
 /**
  * @description: 新增岗位 Params 
- * @author: 白雾茫茫丶
+ * @author: laoyang
  */
 export type CreateJobsParams = Pick<
   API.JOBSMANAGEMENT, 'parent_id' | 'jobs_name' | 'org_id' | 'leader' | 'sort' | 'describe'>
 
 /**
  * @description: FormTemplate Props
- * @author: 白雾茫茫丶
+ * @author: laoyang
  */
 export type FormTemplateProps = {
   treeData: API.JOBSMANAGEMENT[]; // 岗位树形数据
@@ -29,6 +29,6 @@ export type FormTemplateProps = {
 
 /**
  * @description: 头部搜索表单 Params 
- * @author: 白雾茫茫丶
+ * @author: laoyang
  */
 export type SearchParams = Partial<Pick<API.JOBSMANAGEMENT, 'jobs_id' | 'org_id'>> & SearchTimes

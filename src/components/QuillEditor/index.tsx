@@ -1,9 +1,9 @@
 /*
  * @Description: 富文本编辑器
  * @Version: 2.0
- * @Author: 白雾茫茫丶
+ * @Author: laoyang
  * @Date: 2023-08-29 13:41:04
- * @LastEditors: 白雾茫茫丶
+ * @LastEditors: laoyang
  * @LastEditTime: 2023-08-29 16:28:41
  */
 import 'react-quill/dist/quill.snow.css';

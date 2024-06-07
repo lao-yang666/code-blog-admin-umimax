@@ -1,9 +1,9 @@
 /*
  * @Description: 表格操作下拉菜单
  * @Version: 2.0
- * @Author: 白雾茫茫丶
+ * @Author: laoyang
  * @Date: 2023-08-30 17:50:17
- * @LastEditors: 白雾茫茫丶
+ * @LastEditors: laoyang
  * @LastEditTime: 2023-10-17 11:32:03
  */
 import { ClusterOutlined, DeleteOutlined, DownOutlined, EditOutlined } from '@ant-design/icons' // antd 图标库
@@ -84,7 +84,7 @@ const DropdownMenu: FC<DropdownMenuProps> = ({
 
   /**
    * @description: 点击菜单回调
-   * @author: 白雾茫茫丶
+   * @author: laoyang
    */
   const onClickMenuItem: MenuProps['onClick'] = ({ key }) => {
     // 删除参数

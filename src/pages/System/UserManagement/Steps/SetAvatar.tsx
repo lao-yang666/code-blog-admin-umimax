@@ -1,9 +1,9 @@
 /*
  * @Description: 设置头像
  * @Version: 2.0
- * @Author: 白雾茫茫丶
+ * @Author: laoyang
  * @Date: 2022-10-09 15:46:56
- * @LastEditors: 白雾茫茫丶
+ * @LastEditors: laoyang
  * @LastEditTime: 2023-09-22 14:51:44
  */
 import { useIntl } from '@umijs/max'

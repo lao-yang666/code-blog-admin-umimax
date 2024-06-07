@@ -1,9 +1,9 @@
 /*
  * @Description: SSE 事件推送
  * @Version: 2.0
- * @Author: 白雾茫茫丶
+ * @Author: laoyang
  * @Date: 2023-10-16 13:36:33
- * @LastEditors: 白雾茫茫丶
+ * @LastEditors: laoyang
  * @LastEditTime: 2023-10-17 14:00:37
  */
 import { useIntl } from '@umijs/max'

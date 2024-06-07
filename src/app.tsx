@@ -1,9 +1,9 @@
 /*
  * @Description: 全局入口文件
  * @Version: 2.0
- * @Author: 白雾茫茫丶
+ * @Author: laoyang
  * @Date: 2022-09-17 20:33:50
- * @LastEditors: 白雾茫茫丶
+ * @LastEditors: laoyang
  * @LastEditTime: 2023-10-24 09:43:51
  */
 
@@ -18,10 +18,8 @@ import {
   menuControllerGetSelPermissionList as roleGetMenuAccessByid,
 } from '@/services/blog/caidanguanli'
 import { permissionControllerGetRoleUserAccessByid as getMenuView } from '@/services/blog/quanxianguanli'
-import { getAllLocalesLang } from '@/services/system/internationalization'
 import {
-  getLocalStorageItem, getSessionStorageItem, getToken,
-  initUserAuthority, setLocalStorageItem, setSessionStorageItem,
+  getLocalStorageItem, getSessionStorageItem, getToken, setLocalStorageItem,
 } from '@/utils' // 全局工具函数
 import { ANTD_LANGS } from '@/utils/const'
 import { LOCAL_STORAGE, ROUTES } from '@/utils/enums'
@@ -30,6 +28,7 @@ import type { DynamicRoutes } from '@/utils/types/dynamicroutes/typings';
 import umiRequest from '@/utils/umiRequest'; // umi-request 请求封装
 
 import defaultSettings from '../config/defaultSettings'; // 全局默认配置
+import Locales from '../src/locales'; // 全局多语言配置
 import loopMenuItem from './components/DiyRouteItem';
 
 /**
@@ -47,11 +46,11 @@ export async function getInitialState() {
   // 初始化多语言
   // const Locales = get(await getAllLocalesLang(), 'data', {})
   // 动态添加多语言
-  // if (!isEmpty(Locales) && !isNil(Locales)) {
-  //   forEach(Locales, (value: Record<string, string>, key: Langs) => {
-  //     addLocale(key, value, ANTD_LANGS[key]);
-  //   })
-  // }
+  if (!isEmpty(Locales) && !isNil(Locales)) {
+    forEach(Locales, (value: Record<string, string>, key: Langs) => {
+      addLocale(key, value, ANTD_LANGS[key]);
+    })
+  }
   // 初始化数据
   const initialState: InitialStateTypes = {
     userInfo,
@@ -59,6 +58,7 @@ export async function getInitialState() {
     Access_token: ACCESS_TOKEN,
     Settings: Layout_Settings,
     Collapsed: false,
+    Locales,
   }
   console.log(initialState, 'initia===app=app');
   // 判断是否登录，没有登录跳转到登录页
@@ -93,21 +93,21 @@ export async function getInitialState() {
 /**
  * @description: 全局 lyout 布局
  * @doc ProLayout 支持的api https://procomponents.ant.design/components/layout
- * @Author: 白雾茫茫丶
+ * @Author: laoyang
  */
 export const layout = BasiLayout
 
 /**
  * @description: 完全覆盖内置的多 Tabs 组件，需要搭配配置 hasCustomTabs:true 使用。
  * @doc https://alitajs.com/zh-CN/docs/guides/tabs#getcustomtabs
- * @Author: 白雾茫茫丶
+ * @Author: laoyang
  */
 export const getCustomTabs = () => (props: TabsLayoutProps) => <TabsLayout {...props} />
 
 /**
  * @description: request 配置，可以配置错误处理，它基于 axios 和 ahooks 的 useRequest 提供了一套统一的网络请求和错误处理方案。
  * @doc https://umijs.org/docs/max/request#配置
- * @Author: 白雾茫茫丶
+ * @Author: laoyang
  */
 export const request = umiRequest;
 

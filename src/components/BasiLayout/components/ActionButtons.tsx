@@ -1,9 +1,9 @@
 /*
  * @Description: 全局通用按钮
  * @Version: 2.0
- * @Author: 白雾茫茫丶
+ * @Author: laoyang
  * @Date: 2023-10-23 13:47:16
- * @LastEditors: 白雾茫茫丶<baiwumm.com>
+ * @LastEditors: laoyang<baiwumm.com>
  * @LastEditTime: 2024-02-02 10:37:46
  */
 import { EllipsisOutlined, QuestionCircleOutlined, SyncOutlined } from '@ant-design/icons';
@@ -28,12 +28,12 @@ const ActionButtons: FC = () => {
       {/* Github issues*/}
       <FloatButton
         icon={<QuestionCircleOutlined />}
-        onClick={() => window.open('//github.com/baiwumm/Xmw-Admin/issues')}
+        onClick={() => window.open('//github.com/lao-yang666/laoyang-admin/issues')}
         tooltip={formatMessage({ id: `${INTERNATION.BASICLAYOUT}.ActionButtons.github-issues` })}
       />
       {/* 项目文档 */}
       <FloatButton
-        onClick={() => window.open('//docs.baiwumm.com/personal-project/xmw-admin')}
+        onClick={() => window.open('//http://101.43.20.171:9090/')}
         tooltip={formatMessage({ id: `${INTERNATION.BASICLAYOUT}.ActionButtons.document` })}
       />
       {/* 刷新页面 */}

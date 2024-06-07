@@ -1,9 +1,9 @@
 /*
  * @Description: 国际化-表格列表
  * @Version: 2.0
- * @Author: 白雾茫茫丶
+ * @Author: laoyang
  * @Date: 2022-09-02 13:54:14
- * @LastEditors: 白雾茫茫丶
+ * @LastEditors: laoyang
  * @LastEditTime: 2023-09-21 15:32:11
  */
 import { FontSizeOutlined } from '@ant-design/icons'
@@ -51,7 +51,7 @@ const TableTemplate: FC = () => {
 
 	/**
 	 * @description: 获取国际化列表
-	 * @author: 白雾茫茫丶
+	 * @author: laoyang
 	 */
 	const { data: internationalList, runAsync: fetchInternationalList } = useRequest(
 		async (params) => formatResponse(await getInternationalList(params)), {
@@ -61,7 +61,7 @@ const TableTemplate: FC = () => {
 
 	/**
 	* @description: proTable columns 配置项
-	* @author: 白雾茫茫丶
+	* @author: laoyang
 	*/
 	const columns: ProColumns<API.INTERNATIONALIZATION>[] = [
 		{

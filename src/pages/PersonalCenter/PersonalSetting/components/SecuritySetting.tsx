@@ -1,9 +1,9 @@
 /*
  * @Description: 安全设置
  * @Version: 2.0
- * @Author: 白雾茫茫丶
+ * @Author: laoyang
  * @Date: 2023-01-13 17:33:55
- * @LastEditors: 白雾茫茫丶
+ * @LastEditors: laoyang
  * @LastEditTime: 2023-09-21 17:58:06
  */
 import { ProList } from '@ant-design/pro-components';
@@ -31,13 +31,13 @@ const SecuritySetting: FC<{ setActiveKey: React.Dispatch<React.SetStateAction<st
   const { initialState } = useModel('@@initialState');
   // 校验密码强度
   const passwordStrength = () => {
-    const analysisValue: { score: number } = zxcvbn(decryptionAesPsd(initialState?.CurrentUser?.password || ''))
+    const analysisValue: { score: number } = zxcvbn(decryptionAesPsd(initialState?.userInfo?.password || ''))
     // score得分只有0~4，且只有整数范围并没有小数
     return formatMessage({ id: `components.StrengthMeter.${keys(strengthMeterOptions)[analysisValue.score]}` })
   }
   // 邮箱中间三位星号表示
   const regEmail = () => {
-    const email = initialState?.CurrentUser?.email || ''
+    const email = initialState?.userInfo?.email || ''
     const emailSplit = email.split('@')
     return `${emailSplit[0].replace(/^(\d{3}).*(\d{4})$/, '$1***$2')}@${emailSplit[1]}`
   }
@@ -53,7 +53,7 @@ const SecuritySetting: FC<{ setActiveKey: React.Dispatch<React.SetStateAction<st
     },
     {
       name: 'security-phone',
-      desc: initialState?.CurrentUser?.phone.replace(/^(\d{3})\d{4}(\d{4})$/, '$1****$2'),
+      desc: initialState?.userInfo?.phone.replace(/^(\d{3})\d{4}(\d{4})$/, '$1****$2'),
       activeKey: 'basicSetting',
     },
     {

@@ -1,9 +1,9 @@
 /*
  * @Description: 左侧个人信息
  * @Version: 2.0
- * @Author: 白雾茫茫丶
+ * @Author: laoyang
  * @Date: 2023-01-17 10:02:38
- * @LastEditors: 白雾茫茫丶
+ * @LastEditors: laoyang
  * @LastEditTime: 2023-10-19 14:52:09
  */
 import { useModel } from '@umijs/max'
@@ -29,7 +29,7 @@ const LeftContent: FC = () => {
     address,
     tags,
     city,
-  } = initialState?.CurrentUser || {}
+  } = initialState?.userInfo || {}
   // 渲染图标
   const renderIcon = (type: string) => {
     return <IconFont type={type} style={{ fontSize: 18, marginRight: 10, verticalAlign: '-5px' }} />

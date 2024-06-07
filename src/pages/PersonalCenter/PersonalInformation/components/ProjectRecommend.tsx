@@ -1,9 +1,9 @@
 /*
  * @Description: 项目推荐
  * @Version: 2.0
- * @Author: 白雾茫茫丶
+ * @Author: laoyang
  * @Date: 2023-10-19 14:56:08
- * @LastEditors: 白雾茫茫丶
+ * @LastEditors: laoyang
  * @LastEditTime: 2023-10-26 17:43:50
  */
 import { ExportOutlined, EyeOutlined, ForkOutlined, StarOutlined } from '@ant-design/icons';
@@ -29,7 +29,7 @@ const ProjectRecommend: FC = () => {
   const { formatMessage } = useIntl();
   /**
  * @description: 请求开源仓库信息
- * @author: 白雾茫茫丶
+ * @author: laoyang
  */
   const { data: repositoryList, loading: repositoryListLoading } = useRequest(
     async () => {
@@ -43,7 +43,7 @@ const ProjectRecommend: FC = () => {
 
   /**
    * @description: 底部操作栏
-   * @author: 白雾茫茫丶
+   * @author: laoyang
    */
   const IconText = ({ icon, text, url, title }: IconTextProps) => (
     <Tooltip title={title}>

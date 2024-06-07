@@ -1,9 +1,9 @@
 /*
  * @Description: 锁定屏幕页面
  * @Version: 2.0
- * @Author: 白雾茫茫丶
+ * @Author: laoyang
  * @Date: 2023-01-06 14:20:20
- * @LastEditors: 白雾茫茫丶
+ * @LastEditors: laoyang
  * @LastEditTime: 2023-10-17 13:46:15
  */
 import { useEmotionCss } from '@ant-design/use-emotion-css';
@@ -59,7 +59,7 @@ const LockScreen: FC<{ setLockPageFalse: () => void }> = ({ setLockPageFalse }) 
     <div className={wrapClassName}>
       <Row justify="center" align="middle" style={{ flexDirection: 'column' }}>
         <Col>
-          <Avatar size={120} src={initialState?.CurrentUser?.avatar_url} />
+          <Avatar size={120} src={initialState?.userInfo?.avatar_url} />
         </Col>
         <Col>
           <Title level={2}>{initialState?.userInfo?.nickName}</Title>

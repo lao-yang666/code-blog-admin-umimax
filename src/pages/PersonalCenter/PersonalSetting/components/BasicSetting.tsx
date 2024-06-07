@@ -1,9 +1,9 @@
 /*
  * @Description: 基本设置
  * @Version: 2.0
- * @Author: 白雾茫茫丶
+ * @Author: laoyang
  * @Date: 2023-01-13 09:26:44
- * @LastEditors: 白雾茫茫丶
+ * @LastEditors: laoyang
  * @LastEditTime: 2023-10-08 09:11:12
  */
 import { ProForm } from '@ant-design/pro-components';
@@ -28,7 +28,7 @@ const BasicSetting: FC = () => {
 
   /**
  * @description: 更新用户信息
- * @author: 白雾茫茫丶
+ * @author: laoyang
  */
   const { run: runUpdateUser } = useRequest(updateUser, {
     manual: true,
@@ -36,8 +36,8 @@ const BasicSetting: FC = () => {
       if (isSuccess(code)) {
         message.success(msg)
         // 更新全局状态
-        if (initialState?.CurrentUser) {
-          setInitialState({ ...initialState, CurrentUser: { ...initialState.CurrentUser, ...params[0] } })
+        if (initialState?.userInfo) {
+          setInitialState({ ...initialState, userInfo: { ...initialState.userInfo, ...params[0] } })
         }
       }
     },
@@ -46,10 +46,10 @@ const BasicSetting: FC = () => {
   return (
     <ProForm<API.USERMANAGEMENT | undefined>
       grid
-      request={async () => initialState?.CurrentUser}
+      request={async () => initialState?.userInfo}
       onFinish={
         async (values) => {
-          const user_id = initialState?.CurrentUser?.user_id
+          const user_id = initialState?.userInfo?.user_id
           if (values && user_id) {
             runUpdateUser({ ...values, user_id })
           }

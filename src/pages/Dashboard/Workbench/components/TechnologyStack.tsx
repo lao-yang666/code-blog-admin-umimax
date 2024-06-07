@@ -1,9 +1,9 @@
 /*
  * @Description: 项目技术栈
  * @Version: 2.0
- * @Author: 白雾茫茫丶
+ * @Author: laoyang
  * @Date: 2023-10-11 09:04:26
- * @LastEditors: 白雾茫茫丶
+ * @LastEditors: laoyang
  * @LastEditTime: 2023-10-11 16:45:16
  */
 import { CheckCard } from '@ant-design/pro-components';
@@ -24,7 +24,7 @@ const TechnologyStack: FC<TechnologyStackProps> = ({ renderSecondary }) => {
   const { formatMessage } = useIntl();
   /**
  * @description: 项目主要技术栈
- * @author: 白雾茫茫丶
+ * @author: laoyang
  */
   const technologyStack = [
     {

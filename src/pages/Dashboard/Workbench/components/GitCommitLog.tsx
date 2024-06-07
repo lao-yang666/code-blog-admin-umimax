@@ -1,9 +1,9 @@
 /*
  * @Description: Git 更新日志
  * @Version: 2.0
- * @Author: 白雾茫茫丶
+ * @Author: laoyang
  * @Date: 2023-10-11 09:54:01
- * @LastEditors: 白雾茫茫丶
+ * @LastEditors: laoyang
  * @LastEditTime: 2023-10-11 10:00:17
  */
 import { useRequest } from 'ahooks'
@@ -21,7 +21,7 @@ const GitCommitLog: FC = () => {
   dayjs.extend(relativeTime);
   /**
  * @description: 请求项目 commit 日志
- * @author: 白雾茫茫丶
+ * @author: laoyang
  */
   const { data: commitList } = useRequest(
     async () => {

@@ -1,9 +1,9 @@
 /*
  * @Description: 博客日志
  * @Version: 2.0
- * @Author: 白雾茫茫丶
+ * @Author: laoyang
  * @Date: 2023-10-11 10:02:20
- * @LastEditors: 白雾茫茫丶<baiwumm.com>
+ * @LastEditors: laoyang<baiwumm.com>
  * @LastEditTime: 2024-01-29 09:29:15
  */
 import { useIntl } from '@umijs/max'
@@ -28,7 +28,7 @@ const BlogLogs: FC<BlogLogsProps> = ({ renderSecondary }) => {
   const { formatMessage } = useIntl();
   /**
  * @description: 最新动态
- * @Author: 白雾茫茫丶
+ * @Author: laoyang
  */
   const latestNews: LatestNewsTypes[] = [
     {

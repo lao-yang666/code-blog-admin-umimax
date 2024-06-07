@@ -1,9 +1,9 @@
 /*
  * @Description: 修改密码
  * @Version: 2.0
- * @Author: 白雾茫茫丶
+ * @Author: laoyang
  * @Date: 2023-01-12 16:10:13
- * @LastEditors: 白雾茫茫丶
+ * @LastEditors: laoyang
  * @LastEditTime: 2023-10-08 09:11:47
  */
 import { ProFormText } from '@ant-design/pro-components';
@@ -36,13 +36,13 @@ const ChangePassword: FC = () => {
 
   /**
  * @description: 退出登录，并且将当前的 url 保存
- * @author: 白雾茫茫丶
+ * @author: laoyang
  */
   const { run: loginOut } = useRequest(Logout, {
     manual: true,
     onSuccess: async ({ code }) => {
       if (isSuccess(code)) {
-        setInitialState((s: InitialStateTypes) => ({ ...s, CurrentUser: undefined, Access_token: undefined }));
+        setInitialState((s: InitialStateTypes) => ({ ...s, userInfo: undefined, Access_token: undefined }));
         removeLocalStorageItem(LOCAL_STORAGE.ACCESS_TOKEN);
         removeLocalStorageItem(LOCAL_STORAGE.USER_INFO);
         // 退出登录返回登录页
@@ -54,7 +54,7 @@ const ChangePassword: FC = () => {
 
   /**
  * @description: 更新用户密码
- * @author: 白雾茫茫丶
+ * @author: laoyang
  */
   const { run: runUpdateUser } = useRequest(updateUser, {
     manual: true,
@@ -72,14 +72,14 @@ const ChangePassword: FC = () => {
   // 表单提交
   const handlerSubmit = (values: PasswordParams) => {
     // 判断原密码是否正确
-    if (encryptionAesPsd(values.originalPassword) !== initialState?.CurrentUser?.password) {
+    if (encryptionAesPsd(values.originalPassword) !== initialState?.userInfo?.password) {
       message.error(formatMessage({ id: formatPerfix(ROUTES.PERSONALSETTING, 'change-password.error') }))
     } else {
       Modal.confirm({
         title: formatMessage({ id: INTERNATION.WARM_TIPS }),
         content: formatMessage({ id: formatPerfix(ROUTES.PERSONALSETTING, 'change-password.tip') }),
         onOk: async () => {
-          const user_id = initialState?.CurrentUser?.user_id
+          const user_id = initialState?.userInfo?.user_id
           if (user_id) {
             runUpdateUser({ password: encryptionAesPsd(values.password), user_id })
           }

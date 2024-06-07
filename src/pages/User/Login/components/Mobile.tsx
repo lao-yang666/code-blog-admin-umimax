@@ -1,9 +1,9 @@
 /*
  * @Description: 手机号码登录
  * @Version: 2.0
- * @Author: 白雾茫茫丶
+ * @Author: laoyang
  * @Date: 2022-10-11 14:52:29
- * @LastEditors: 白雾茫茫丶
+ * @LastEditors: laoyang
  * @LastEditTime: 2023-09-22 14:51:03
  */
 import { MobileOutlined } from '@ant-design/icons';

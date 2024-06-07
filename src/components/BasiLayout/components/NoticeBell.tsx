@@ -1,9 +1,9 @@
 /*
  * @Description: 消息铃铛
  * @Version: 2.0
- * @Author: 白雾茫茫丶
+ * @Author: laoyang
  * @Date: 2023-10-08 15:26:07
- * @LastEditors: 白雾茫茫丶
+ * @LastEditors: laoyang
  * @LastEditTime: 2023-10-12 15:40:20
  */
 import { BellOutlined } from '@ant-design/icons'
@@ -33,7 +33,7 @@ const NoticeBell: FC = () => {
 
   /**
  * @description: 获取活动公告列表
- * @author: 白雾茫茫丶
+ * @author: laoyang
  */
   const { data: announcementList, loading: announcementListLoading, run: fetchAnnouncementList } = useRequest(
     async () => get(await getAnnouncementList({
@@ -46,7 +46,7 @@ const NoticeBell: FC = () => {
 
   /**
  * @description: 查询不同消息类型的未读条数
- * @author: 白雾茫茫丶
+ * @author: laoyang
  */
   const { data: unreadyCount, loading: unreadyCountLoading, run: fetchUnreadyCount } = useRequest(
     async () => get(await queryUnreadyCount(), 'data', {}), {
@@ -58,7 +58,7 @@ const NoticeBell: FC = () => {
 
   /**
    * @description: 消息类型
-   * @author: 白雾茫茫丶
+   * @author: laoyang
    */
   const renderAnnouncementType = (
     <Tabs
@@ -77,7 +77,7 @@ const NoticeBell: FC = () => {
 
   /**
    * @description: 渲染消息内容
-   * @author: 白雾茫茫丶
+   * @author: laoyang
    */
   const renderContent = (
     <Card

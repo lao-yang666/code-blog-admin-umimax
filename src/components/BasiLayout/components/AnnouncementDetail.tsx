@@ -1,9 +1,9 @@
 /*
  * @Description: 活动公告详情
  * @Version: 2.0
- * @Author: 白雾茫茫丶
+ * @Author: laoyang
  * @Date: 2023-09-28 09:45:19
- * @LastEditors: 白雾茫茫丶
+ * @LastEditors: laoyang
  * @LastEditTime: 2023-10-17 13:58:53
  */
 import { useBoolean, useMount, useRequest, useUnmount } from 'ahooks'
@@ -25,7 +25,7 @@ const AnnouncementDetail: FC = () => {
   const [open, { setTrue: setOpenDrawerTrue, setFalse: setOpenDrawerFalse }] = useBoolean(false)
   /**
    * @description: 公告已读
-   * @author: 白雾茫茫丶
+   * @author: laoyang
    */
   const { runAsync: fetchAnnouncementAlready } = useRequest(async (params) => await announcementAlready(params), {
     manual: true,
@@ -33,7 +33,7 @@ const AnnouncementDetail: FC = () => {
 
   /**
    * @description: 查看详情
-   * @author: 白雾茫茫丶
+   * @author: laoyang
    */
   const handleAnnouncementDetails = async (record: API.ANNOUNCEMENT, callback?: () => void) => {
     setCurrentRecord(record);
@@ -47,7 +47,7 @@ const AnnouncementDetail: FC = () => {
 
   /**
    * @description: 退出详情
-   * @author: 白雾茫茫丶
+   * @author: laoyang
    */
   const handlerCancel = () => {
     setCurrentRecord(undefined);
