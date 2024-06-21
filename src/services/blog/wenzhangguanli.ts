@@ -36,7 +36,7 @@ export async function postControllerUpdatePost(
 /** 删除文章 DELETE /post/${param0} */
 export async function postControllerDeletePost(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
-  params: {id:number},
+  params: { id: number },
   options?: { [key: string]: any },
 ) {
   const { id: param0, ...queryParams } = params;
@@ -91,7 +91,7 @@ export async function postControllerDeleteDraft(
   options?: { [key: string]: any },
 ) {
   const { id: param0, ...queryParams } = params;
-  return request<any>(`/post/draft${param0}`, {
+  return request<any>(`/post/draft/${param0}`, {
     method: 'DELETE',
     params: { ...queryParams },
     ...(options || {}),
@@ -118,6 +118,91 @@ export async function postControllerCreatePost(body: API.PostNew, options?: { [k
   return request<any>('/post/new', {
     method: 'POST',
     data: body,
+    ...(options || {}),
+  });
+}
+
+/** 文章点赞  */
+export async function postControllerCreateLike(postId: number, options?: { [key: string]: any }) {
+  return request<any>(`/post/like/new/${postId}`, {
+    method: 'POST',
+    ...(options || {}),
+  });
+}
+
+/** 文章收藏  */
+export async function postControllerCreateCollection(postId: number, options?: { [key: string]: any }) {
+  return request<any>(`/post/collect/new/${postId}`, {
+    method: 'POST',
+    ...(options || {}),
+  });
+}
+
+
+/** 删除点赞  */
+export async function postControllerDeleteLike(id: number, options?: { [key: string]: any }) {
+  return request<any>(`/post/like/del/${id}`, {
+    method: 'DELETE',
+    ...(options || {}),
+  });
+}
+
+/** 删除收藏  */
+export async function postControllerDeleteCollect(id: number, options?: { [key: string]: any }) {
+  return request<any>(`/post/collect/del/${id}`, {
+    method: 'DELETE',
+    ...(options || {}),
+  });
+}
+
+/** 获取文章评论 GET /post/list */
+export async function postControllerGetCommentList(
+  // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
+  id: number,
+  options?: { [key: string]: any },
+) {
+  return request<any>(`/post/comment/list/${id}`, {
+    method: 'GET',
+    ...(options || {}),
+  });
+}
+
+/** 获取文章是否被点赞  */
+export async function postControllerGetCollectStatus(
+  id: number,
+  options?: { [key: string]: any },
+) {
+  return request<any>(`/post/collect/one/${id}`, {
+    method: 'GET',
+    ...(options || {}),
+  });
+}
+
+/** 获取文章是否被收藏  */
+export async function postControllerLikeStatus(
+  id: number,
+  options?: { [key: string]: any },
+) {
+  return request<any>(`/post/like/one/${id}`, {
+    method: 'GET',
+    ...(options || {}),
+  });
+}
+
+
+/** 文章评论  */
+export async function postControllerCreateComment(body: API.PostComment, options?: { [key: string]: any }) {
+  return request<any>('/post/comment/new', {
+    method: 'POST',
+    data: body,
+    ...(options || {}),
+  });
+}
+
+/** 删除评论  */
+export async function postControllerDeleteComment(id: number, options?: { [key: string]: any }) {
+  return request<any>(`/post/comment/del/${id}`, {
+    method: 'DELETE',
     ...(options || {}),
   });
 }

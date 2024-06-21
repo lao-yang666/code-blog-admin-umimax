@@ -121,12 +121,10 @@ export function patchClientRoutes({ routes }: { routes: DynamicRoutes.RouteItem[
     routes[routerIndex]['routes'].push(
       ...loopMenuItem(extraRoutes, parentId),
     )
-    console.log('===extraRoutes==,', extraRoutes);
   }
 }
 
 export function render(oldRender: any) {
-  console.log('===render==');
   queryMenuList().then((res) => {
     if (res) {
       extraRoutes = res.data;

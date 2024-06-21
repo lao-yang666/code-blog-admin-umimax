@@ -163,6 +163,7 @@ export const getRoutes = (menus: API.Menu[] | undefined): any => {
 
 
 export const formatRoute = (menu: API.Menu): any => {
+  const extraProperties = JSON.parse(menu.extraProperties || '{}')
   return {
     path: menu.path,
     name: menu.name,
@@ -175,6 +176,7 @@ export const formatRoute = (menu: API.Menu): any => {
     hideInMenu: menu.hideInMenu === 0,
     hideInBreadcrumb: menu.hideInBreadcrumb === 0,
     hideChildrenInMenu: menu.hideChildrenInMenu === 0,
+    ...extraProperties
   }
 }
 

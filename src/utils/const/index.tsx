@@ -18,7 +18,6 @@ import { keys, toLower } from 'lodash-es'
 
 import { formatPerfix } from '@/utils'
 import {
-  ANNOUNCEMENT_TYPE,
   FLAG,
   INTERNATION,
   LANGS,
@@ -30,6 +29,7 @@ import {
   SEX,
   STATUS,
   TARGET_TYPE,
+  MSG_TYPE
 } from '@/utils/enums'
 import { EnumKeys, Langs } from '@/utils/types'
 import { AnnouncementType } from '@/utils/types/administrative/announcement'
@@ -121,10 +121,10 @@ export const SEX_OPTS: LabeledValue[] = [
  * @author: laoyang
  */
 export const AnnouncementTypeEnum: Record<AnnouncementType, string> = {
-  [ANNOUNCEMENT_TYPE.ANNOUNCEMENT]: 'announcement',
-  [ANNOUNCEMENT_TYPE.ACTIVITY]: 'activity',
-  [ANNOUNCEMENT_TYPE.MESSAGE]: 'message',
-  [ANNOUNCEMENT_TYPE.NOTIFICATION]: 'notification',
+  [MSG_TYPE.ANNOUNCEMENT]: 'announcement',
+  [MSG_TYPE.ACTIVITY]: 'activity',
+  [MSG_TYPE.MESSAGE]: 'message',
+  [MSG_TYPE.NOTIFICATION]: 'notification',
 }
 
 /**

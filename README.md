@@ -18,16 +18,16 @@ cd Xmw_web
 
 2. 安装依赖
 ```
-npm install -g pnpm
-pnpm install
+npm install -g yarn
+yarn install
 ```
 
 - 开发模式运行
 ```
-pnpm start
+npm start
 ```
 
 - 编译项目
 ```
-pnpm build
+npm build
 ```

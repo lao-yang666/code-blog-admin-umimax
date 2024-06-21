@@ -8,7 +8,7 @@ declare namespace API {
     content: string;
     published?: boolean;
     authorId?: number;
-    author?:User;
+    author?: User;
     category?: string;
     viewNum?: number;
     ikeNum?: number;
@@ -22,7 +22,7 @@ declare namespace API {
     draftId?: number;
     postId?: number;
     title: string;
-    author?:User;
+    author?: User;
     content: string;
     published?: boolean;
     authorId: number;
@@ -176,6 +176,36 @@ declare namespace API {
     nickName?: string;
   };
 
+  type MsgType = 'gd' | 'tz' | 'xx' | 'hd';
+
+  type Msg = {
+    id: number;
+    user_id: number;
+    title: string;
+    content: number;
+    status?: number;
+    type: MsgType;
+    pinned: number;
+    created_time: string;
+    author?: API.User
+  };
+
+  type MsgNew = {
+    user_id: number;
+    title: string;
+    content: number;
+    status?: number;
+    type: MsgType;
+    pinned: number;
+  };
+
+  type MsgControllerGetMsgListParams = {
+    current: number;
+    pageSize: number;
+    title?: string;
+    type?: MsgType;
+  };
+
   type Logs = {
     id: number;
     user_id: string;
@@ -313,6 +343,37 @@ declare namespace API {
     menu: Menu,
     role: Role,
     button_permission: buttonPermission,
+  }
+
+  type PostLike = {
+    id: string;
+    postId: number;
+    userId: number,
+    created_time: string;
+    updated_time: string;
+    user?: User;
+    post?: Post;
+  }
+
+  type PostComment = {
+    id: string;
+    content: string
+    postId: number;
+    authorId: number,
+    created_time: string;
+    updated_time: string;
+    author?: User;
+    post?: Post;
+  }
+
+  type PostCollection = {
+    id: string;
+    postId: number;
+    userId: number,
+    created_time: string;
+    updated_time: string;
+    user?: User;
+    post?: Post;
   }
 
 }

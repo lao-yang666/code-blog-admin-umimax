@@ -17,6 +17,7 @@ import { formatPerfix, randomTagColor } from '@/utils'
 import { AnnouncementTypeEnum } from '@/utils/const'
 import { EVENTBUS_TYPE, ROUTES } from '@/utils/enums'
 import eventBus from '@/utils/eventBus'
+import { msgControllerGetSelMsgList } from '@/services/blog/msg';
 
 const LatestAnnouncement: FC = () => {
   // 国际化工具
@@ -26,8 +27,8 @@ const LatestAnnouncement: FC = () => {
 * @author: laoyang
 */
   const { data: announcementList, loading: announcementListLoading } = useRequest(
-    async (params) => get(await getAnnouncementList(params), 'data.list', []), {
-    defaultParams: [{ current: 1, pageSize: 5 }],
+    async (params) => get(await msgControllerGetSelMsgList(params), 'data.list', []), {
+    defaultParams: [{ type: 'hd' }],
   })
   return (
     <Card

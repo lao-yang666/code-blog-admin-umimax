@@ -1,5 +1,5 @@
 /*
- * @Description: 最新文章
+ * @Description: 更多作品
  * @Version: 2.0
  * @Author: laoyang
  * @Date: 2023-10-11 09:48:13
@@ -15,7 +15,7 @@ import { FC } from 'react'
 import services from '@/services/blog'
 import { randomTagColor } from '@/utils'
 const { postControllerGetPublishedPosts: queryPostList } = services.wenzhangguanli;
-const HotPost: FC = () => {
+const MoreArticles: FC = () => {
 
 
   const { data: postList, loading } = useRequest(
@@ -23,7 +23,7 @@ const HotPost: FC = () => {
     defaultParams: [{ current: 1, pageSize: 5 }],
   })
   return (
-    <Card title='最新文章'>
+    <Card title='更多作品' style={{ marginTop: '20px' }}>
       <List
         itemLayout="horizontal"
         loading={loading}
@@ -43,4 +43,4 @@ const HotPost: FC = () => {
     </Card>
   )
 }
-export default HotPost
+export default MoreArticles

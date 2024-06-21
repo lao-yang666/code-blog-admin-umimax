@@ -22,7 +22,6 @@ export default function access(initialState: InitialStateTypes | undefined) {
       })
     })
   }
-  console.log(menuAccess, '=========menuAccess=========cc==', userInfo);
   return {
     role_level: userInfo?.role?.sort as number,
     menuAccess,

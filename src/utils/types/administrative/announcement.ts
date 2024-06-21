@@ -1,4 +1,4 @@
-import { ANNOUNCEMENT_TYPE } from '@/utils/enums'
+import { MSG_TYPE } from '@/utils/enums'
 import type { EnumValues, PaginationParams } from '@/utils/types'
 
 /**
@@ -36,7 +36,7 @@ export type PinnedParams = Pick<API.ANNOUNCEMENT, 'announcement_id' | 'pinned'>
  * @description: 公告类型
  * @author: laoyang
  */
-export type AnnouncementType = EnumValues<typeof ANNOUNCEMENT_TYPE>
+export type AnnouncementType = EnumValues<typeof MSG_TYPE>
 
 /**
  * @description: 已读公告

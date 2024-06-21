@@ -282,6 +282,7 @@ const menu = {
   'menu.dashboard.work-bench': '工作台',
   'menu.首页': '首页',
   'menu.依赖环境': '依赖环境',
+  'menu.通知管理': '通知管理',
   'menu.文章管理': '文章管理',
   'menu.文章管理.文章列表': '文章列表',
   'menu.文章管理.新建文章': '新建文章',

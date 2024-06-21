@@ -9,9 +9,11 @@ import * as yonghuguanli from './yonghuguanli';
 import * as jiaoseguanli from './jiaoseguanli';
 import * as youxishanhaijushou from './youxishanhaijushou';
 import * as logs from './logs';
+import * as msg from './msg';
 import * as anniuquanxianguanli from './anniuquanxianguanli';
 import * as quanxianguanli from './quanxianguanli';
 export default {
+  msg,
   anniuquanxianguanli,
   quanxianguanli,
   jiaoseguanli,

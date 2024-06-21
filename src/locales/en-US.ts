@@ -283,6 +283,7 @@ const menu = {
   'menu.首页': 'homePage',
   'menu.依赖环境': 'Environmental dependence',
   'menu.文章管理': 'Article Management',
+  'menu.通知管理': 'notification-management',
   'menu.文章管理.文章列表': 'Article List',
   'menu.文章管理.新建文章': 'New Article',
   'menu.文章管理.文章详情': 'Article Details',

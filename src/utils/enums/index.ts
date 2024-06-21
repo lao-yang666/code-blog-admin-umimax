@@ -156,6 +156,13 @@ export enum ANNOUNCEMENT_TYPE {
   NOTIFICATION = '4', // 通知
 }
 
+export enum MSG_TYPE {
+  ANNOUNCEMENT = 'gd', // 公告
+  ACTIVITY = 'hd', // 活动
+  MESSAGE = 'xx', // 消息
+  NOTIFICATION = 'tz', // 通知
+}
+
 /**
  * @description: 组织类型
  * @author: laoyang

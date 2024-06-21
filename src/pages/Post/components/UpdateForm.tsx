@@ -21,7 +21,7 @@ export interface UpdateFormProps {
   onCancel: (flag?: boolean, formVals?: FormValueType) => void;
   onSubmit: (values: FormValueType) => Promise<void>;
   updateModalVisible: boolean;
-  values: Partial<API.UserInfo>;
+  values: Partial<API.User>;
 }
 
 const UpdateForm: React.FC<UpdateFormProps> = (props) => (

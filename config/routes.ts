@@ -19,7 +19,7 @@ export default [
     layout: false,
     component: './Login',
   },
-    // administrative,
+  // administrative,
   // personalCenter,
   // technicalDocument,
   // dashboard,
@@ -40,4 +40,10 @@ export default [
     layout: false,
     component: './404',
   },
+  // {
+  //   path: '/Msg',
+  //   name: '通知管理',
+  //   component: './Msg',
+  //   access: 'adminRouteFilter'
+  // },
 ];

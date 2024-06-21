@@ -13,19 +13,19 @@ import { Avatar, Badge, Card, ConfigProvider, List, Popover, Spin, Tabs } from '
 import { get, map } from 'lodash-es'
 import { FC, useState } from 'react'
 
-import { getAnnouncementList, queryUnreadyCount } from '@/services/administrative/announcement'
+import { queryUnreadyCount } from '@/services/administrative/announcement'
 import { formatPerfix } from '@/utils'
 import { AnnouncementTypeEnum } from '@/utils/const'
-import { ANNOUNCEMENT_TYPE, EVENTBUS_TYPE, ROUTES } from '@/utils/enums'
+import { EVENTBUS_TYPE, MSG_TYPE, ROUTES } from '@/utils/enums'
 import eventBus from '@/utils/eventBus'
 import type { PaginationParams } from '@/utils/types'
 import type { AnnouncementType } from '@/utils/types/administrative/announcement'
-
+import { msgControllerGetMsgList, getMsgCount } from '@/services/blog/msg';
 const NoticeBell: FC = () => {
   // 国际化工具类
   const { formatMessage } = useIntl();
   // 当前激活 tab 面板的 key
-  const [activeKey, setActiveKey] = useState<AnnouncementType>(ANNOUNCEMENT_TYPE.ANNOUNCEMENT)
+  const [activeKey, setActiveKey] = useState<AnnouncementType>(MSG_TYPE.ACTIVITY)
   // 当前页码
   const [current, setCurrent] = useState<number>(1)
   // 分页参数
@@ -36,9 +36,8 @@ const NoticeBell: FC = () => {
  * @author: laoyang
  */
   const { data: announcementList, loading: announcementListLoading, run: fetchAnnouncementList } = useRequest(
-    async () => get(await getAnnouncementList({
+    async () => get(await msgControllerGetMsgList({
       type: activeKey,
-      unready: true,
       ...paginationParams,
     }), 'data', {}), {
     refreshDeps: [activeKey, current],
@@ -49,7 +48,7 @@ const NoticeBell: FC = () => {
  * @author: laoyang
  */
   const { data: unreadyCount, loading: unreadyCountLoading, run: fetchUnreadyCount } = useRequest(
-    async () => get(await queryUnreadyCount(), 'data', {}), {
+    async () => get(await getMsgCount(), 'data', {}), {
     onSuccess: () => {
       setCurrent(1);
       fetchAnnouncementList();
@@ -68,9 +67,10 @@ const NoticeBell: FC = () => {
         setActiveKey(key);
         setCurrent(1);
       }}
+
       items={map(AnnouncementTypeEnum, (type: string, value: string) => ({
         label:
-          `${formatMessage({ id: formatPerfix(ROUTES.ANNOUNCEMENT, `type.${type}`) })}(${get(unreadyCount, type, 0)})`,
+          `${formatMessage({ id: formatPerfix(ROUTES.ANNOUNCEMENT, `type.${type}`) })}(${get(unreadyCount, value, 0)})`,
         key: value,
       }))} />
   )
