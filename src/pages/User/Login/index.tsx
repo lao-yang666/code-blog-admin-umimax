@@ -32,6 +32,8 @@ const LoginPage: FC = () => {
   const { formatMessage } = useIntl();
   // 初始化状态
   const { initialState, setInitialState } = useModel('@@initialState');
+
+  
   // hooks 调用
   const { notification, message } = App.useApp();
   // 用户登录类型

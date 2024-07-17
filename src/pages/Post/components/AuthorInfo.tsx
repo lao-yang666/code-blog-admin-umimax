@@ -6,36 +6,86 @@
  * @LastEditors: laoyang
  * @LastEditTime: 2023-10-11 17:20:28
  */
-import { history } from '@umijs/max';
 import { useRequest } from 'ahooks'
-import { Avatar, Button, Card, List, Row, Space, Statistic, Tag } from 'antd'
+import { Avatar, Button, Card, Flex, Space, Statistic, Tag, Typography } from 'antd'
 import { get } from 'lodash-es'
-import { FC } from 'react'
-
-import services from '@/services/blog'
+import { FC, useEffect, useState } from 'react'
 import { randomTagColor } from '@/utils'
-const { postControllerGetPublishedPosts: queryPostList } = services.wenzhangguanli;
-const AuthorInfo: FC = () => {
+import {
+  userControllerGetStatistic, userControllerfollowingUser,
+  userControllerChcekfollowing,
+  userControllerDeletefollowing
+} from '@/services/blog/yonghuguanli';
+import { useModel } from '@umijs/max'
+import ToolButton from './ToolButton'
+const { Title, Text } = Typography;
+const AuthorInfo: FC<{  post: API.Post }> = (props) => {
+  const { post } = props
+  const [isFollowing, setIsFollowing] = useState(false)
+  const { initialState } = useModel('@@initialState');
+  const { data: statistic, refresh } = useRequest(
+    async () => {
+      if (post.author?.id) return get(await userControllerGetStatistic(post.author?.id), 'data', [])
+      return {}
+    }
+  )
 
+  const checkFollow = async () => {
+    refresh()
+    if (post.author?.id) setIsFollowing(get(await userControllerChcekfollowing(post.author?.id), 'data', []))
+  }
 
-  const { data: postList, loading } = useRequest(
-    async (params) => get(await queryPostList(params), 'data.list', []), {
-    defaultParams: [{ current: 1, pageSize: 5 }],
-  })
+  const follow = async (type: number) => {
+    try {
+      if (type === 1) {
+        await userControllerfollowingUser(post.author?.id)
+      } else {
+        await userControllerDeletefollowing(post.author?.id)
+      }
+      checkFollow()
+    } catch (error) {
+      console.log(error, 'error');
+    }
+  }
+
+  const onActionAfter = () => {
+    refresh()
+  }
+
+  useEffect(() => {
+    checkFollow()
+  }, [post.author?.id])
   return (
-    <Card>
-      <Space size="large">
-        <Statistic title="文章" value={9} />
-        <Statistic title="阅读" value={99} />
-        <Statistic title="获赞" value={986} />
-        <Statistic title="收藏" value={6} />
-        <Statistic title="粉丝" value={126} />
-      </Space>
-      <Row>
-        <Button type='primary'>关注</Button>
-        <Button>私信</Button>
-      </Row>
-    </Card>
+    <>
+      <ToolButton change={refresh}></ToolButton>
+      <Card>
+        <Flex style={{ marginBottom: 10 }} vertical={false} align='center'>
+          <Avatar src={post.author?.avatar_url} size={80} />
+          <Space direction='vertical' style={{ marginLeft: 20 }}>
+            <Title level={5}>
+              <Text style={{ paddingRight: 10 }}>{post.author?.nickName}</Text>
+              <Tag color={randomTagColor()}>前端</Tag>
+              <Tag color={randomTagColor()}>大小姐</Tag>
+              <Tag color={randomTagColor()}>古灵精怪</Tag>
+            </Title>
+            <Text>一位非常棒的博主自信乐观</Text>
+          </Space>
+        </Flex>
+        <Flex align='center' style={{ width: '100%' }} justify='space-between'>
+          <Statistic title="文章" value={statistic?.postNum} />
+          <Statistic title="阅读" value={statistic?.viewNum} />
+          <Statistic title="获赞" value={statistic?.likeNum} />
+          <Statistic title="收藏" value={statistic?.collectNum} />
+          <Statistic title="粉丝" value={statistic?.fensNum} />
+        </Flex>
+        {initialState.userInfo.id !== post.author?.id && <Flex justify='space-between' style={{ marginTop: 10 }}>
+          {isFollowing ?
+            <Button type='primary' danger style={{ width: '48%' }} size='large' onClick={() => follow(0)}>取消关注</Button> :
+            <Button type='primary' style={{ width: '48%' }} size='large' onClick={() => follow(1)}>关注</Button>}
+          <Button style={{ width: '48%' }} size='large'>私信</Button>
+        </Flex>}
+      </Card>
+    </>
   )
 }
 export default AuthorInfo

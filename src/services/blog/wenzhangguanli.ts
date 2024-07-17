@@ -113,6 +113,16 @@ export async function postControllerGetPublishedPosts(
   });
 }
 
+
+export async function postControllerGetSelPosts(
+  options?: { [key: string]: any },
+) {
+  return request<any>('/post/selist', {
+    method: 'GET',
+    ...(options || {}),
+  });
+}
+
 /** 创建文章 POST /post/new */
 export async function postControllerCreatePost(body: API.PostNew, options?: { [key: string]: any }) {
   return request<any>('/post/new', {

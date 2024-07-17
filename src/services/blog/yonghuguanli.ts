@@ -92,6 +92,13 @@ export async function userControllerGetSelUserList() {
   });
 }
 
+/** 获取统计 */
+export async function userControllerGetStatistic(id:number) {
+  return request<any>(`/user/statistic/${id}`, {
+    method: 'GET',
+  });
+}
+
 /** 新增用户 POST /user/new */
 export async function userControllerCreateUser(
   body: API.UserNew,
@@ -103,6 +110,44 @@ export async function userControllerCreateUser(
       'Content-Type': 'application/json',
     },
     data: body,
+    ...(options || {}),
+  });
+}
+
+/** 新增关注*/
+export async function userControllerfollowingUser(
+  id: number,
+  options?: { [key: string]: any },
+) {
+  return request<any>(`/user/following/new/${id}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    ...(options || {}),
+  });
+}
+
+/** 查看是否关注了 */
+export async function userControllerChcekfollowing(
+  // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
+  id: number,
+  options?: { [key: string]: any },
+) {
+  return request<any>(`/user/following/detail/${id}`, {
+    method: 'GET',
+    ...(options || {}),
+  });
+}
+
+/** 删除关注 **/
+export async function userControllerDeletefollowing(
+  // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
+  id: number,
+  options?: { [key: string]: any },
+) {
+  return request<any>(`/user/following/del/${id}`, {
+    method: 'DELETE',
     ...(options || {}),
   });
 }

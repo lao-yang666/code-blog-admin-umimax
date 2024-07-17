@@ -12,8 +12,10 @@ import * as logs from './logs';
 import * as msg from './msg';
 import * as anniuquanxianguanli from './anniuquanxianguanli';
 import * as quanxianguanli from './quanxianguanli';
+import * as comment from './comment'
 export default {
   msg,
+  comment,
   anniuquanxianguanli,
   quanxianguanli,
   jiaoseguanli,

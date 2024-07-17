@@ -38,5 +38,11 @@ export default {
       exact: true,
       // menuRender: false,
     },
+    {
+      name: '评论管理',
+      path: '/Post/CommentList',
+      component: './Post/Comment',
+      exact: true,
+    },
   ],
 }

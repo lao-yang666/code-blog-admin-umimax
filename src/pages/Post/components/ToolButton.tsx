@@ -1,21 +1,28 @@
-import React, { useEffect, useState } from 'react';
-import { MessageTwoTone, ShareAltOutlined, StarTwoTone, LikeTwoTone } from '@ant-design/icons';
-import { FloatButton } from 'antd';
+import React, { useContext, useEffect, useState } from 'react';
+import Comment from '@/components/Comment'
+import { MessageTwoTone, ShareAltOutlined, StarTwoTone, LikeTwoTone, RollbackOutlined, CloseCircleOutlined } from '@ant-design/icons';
+import { Button, Drawer, FloatButton, Input, Space } from 'antd';
 import {
-  postControllerCreateCollection, postControllerLikeStatus, postControllerCreateComment,
+  postControllerCreateCollection, postControllerLikeStatus,
   postControllerDeleteLike, postControllerDeleteCollect,
   postControllerCreateLike, postControllerGetCollectStatus
 } from '@/services/blog/wenzhangguanli';
+import { PostContext } from "@/contexts/postContext";
+
 // 点赞、收藏、分享、评论
-const ToolButton: React.FC<{ id: string | null }> = (props) => {
+const ToolButton: React.FC<{ change: Function }> = (props) => {
+  const { change } = props
+  const { post, getPostDetail } = useContext(PostContext)
   const [liked, setLiked] = useState<boolean>(false);
   const [colleced, setColleced] = useState<boolean>(false);
-
+  const [showComment, changeShowComment] = useState<boolean>(false);
   const getPostLikeStatus = async () => {
     try {
-      if (props.id) {
-        const res = await postControllerLikeStatus(Number(props.id));
+      if (post.id) {
+        const res = await postControllerLikeStatus(Number(post.id));
         setLiked(res.data)
+        change()
+        getPostDetail()
       }
     } catch (error) {
       console.log(error);
@@ -24,9 +31,11 @@ const ToolButton: React.FC<{ id: string | null }> = (props) => {
 
   const getPostCollectStatus = async () => {
     try {
-      if (props.id) {
-        const res = await postControllerGetCollectStatus(Number(props.id));
+      if (post.id) {
+        const res = await postControllerGetCollectStatus(Number(post.id));
         setColleced(res.data)
+        change()
+        getPostDetail()
       }
     } catch (error) {
       console.log(error);
@@ -35,11 +44,11 @@ const ToolButton: React.FC<{ id: string | null }> = (props) => {
 
   const like = async () => {
     try {
-      if (props.id) {
+      if (post.id) {
         if (liked) {
-          await postControllerDeleteLike(Number(props.id));
+          await postControllerDeleteLike(Number(post.id));
         } else {
-          await postControllerCreateLike(Number(props.id));
+          await postControllerCreateLike(Number(post.id));
         }
         getPostLikeStatus()
       }
@@ -50,11 +59,11 @@ const ToolButton: React.FC<{ id: string | null }> = (props) => {
 
   const star = async () => {
     try {
-      if (props.id) {
+      if (post.id) {
         if (colleced) {
-          await postControllerDeleteCollect(Number(props.id));
+          await postControllerDeleteCollect(Number(post.id));
         } else {
-          await postControllerCreateCollection(Number(props.id));
+          await postControllerCreateCollection(Number(post.id));
         }
         getPostCollectStatus()
       }
@@ -68,22 +77,40 @@ const ToolButton: React.FC<{ id: string | null }> = (props) => {
   }
 
   const comment = () => {
-    console.log('click')
+    changeShowComment(true)
   }
 
   useEffect(() => {
     getPostLikeStatus();
     getPostCollectStatus();
-  }, [props.id])
+  }, [post.id])
 
   return (
     <>
       <FloatButton.Group shape="circle" style={{ left: 204, top: '30%' }}>
-        <FloatButton icon={<LikeTwoTone twoToneColor={liked ? '#222' : ''} />} onClick={like} />
-        <FloatButton icon={<StarTwoTone twoToneColor={colleced ? '#eb2f0' : '#fa8c16'} />} onClick={star} />
-        <FloatButton icon={<MessageTwoTone twoToneColor="#52c41a" />} onClick={comment} />
+        <FloatButton icon={<LikeTwoTone twoToneColor={liked ? '#222' : ''} />} onClick={like} badge={{ count: post.likeNum }} />
+        <FloatButton icon={<StarTwoTone twoToneColor={colleced ? '#eb2f0' : '#fa8c16'} />} onClick={star} badge={{ count: post.collectNum }} />
+        <FloatButton icon={<MessageTwoTone twoToneColor="#52c41a" />} onClick={comment} badge={{ count: post.Comment.length }} />
         <FloatButton icon={<ShareAltOutlined />} onClick={share} />
+        <FloatButton icon={<RollbackOutlined />} onClick={() => history.go(-1)} />
       </FloatButton.Group>
+      <Drawer
+        width={600}
+        open={showComment}
+        onClose={() => {
+          changeShowComment(false)
+        }}
+        closeIcon={
+          <CloseCircleOutlined
+            style={{
+              fontSize: 20,
+            }}
+          />
+        }
+        title="评论"
+      >
+        <Comment></Comment>
+      </Drawer>
     </>
   );
 }

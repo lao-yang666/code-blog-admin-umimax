@@ -15,12 +15,11 @@ import { FC } from 'react'
 import services from '@/services/blog'
 import { randomTagColor } from '@/utils'
 const { postControllerGetPublishedPosts: queryPostList } = services.wenzhangguanli;
-const MoreArticles: FC = () => {
-
-
+const MoreArticles: FC<{ authorId: number, postId: number }> = (props) => {
+  const { authorId, postId } = props
   const { data: postList, loading } = useRequest(
     async (params) => get(await queryPostList(params), 'data.list', []), {
-    defaultParams: [{ current: 1, pageSize: 5 }],
+    defaultParams: [{ current: 1, pageSize: 5, authorId, postId }],
   })
   return (
     <Card title='更多作品' style={{ marginTop: '20px' }}>

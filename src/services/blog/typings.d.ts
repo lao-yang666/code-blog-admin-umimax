@@ -8,14 +8,16 @@ declare namespace API {
     content: string;
     published?: boolean;
     authorId?: number;
-    author?: User;
+    author: User;
     category?: string;
-    viewNum?: number;
-    ikeNum?: number;
-    commentNum?: number;
+    viewNum: number;
+    likeNum: number;
+    collectNum:number;
+    commentNum: number;
     commentList?: string;
     publish_time?: string;
     update_time?: string;
+    Comment: Comment[];
   };
 
   type PostNew = {
@@ -178,6 +180,50 @@ declare namespace API {
 
   type MsgType = 'gd' | 'tz' | 'xx' | 'hd';
 
+  type CommentLike = {
+    id: string;
+    commentId: number;
+    userId: number,
+    created_time: string;
+    updated_time: string;
+  }
+
+  type Comment = {
+    id: string;
+    content: number;
+    isDeleted?: number;
+    created_time: string;
+    updated_time: string;
+    author: API.User
+    post: API.Post
+    authorId: number;
+    postId: number;
+    parent?: Comment
+    parentId?: string
+    replies: Comment[]
+    viewNum: number;
+    comment_like: CommentLike[]
+  };
+
+  type CommentNew = {
+    parentId?: string;
+    postId: number;
+    content: string;
+  };
+
+  type CommentMap = Map<string, API.Comment>
+  
+  type CommentControllerGetCommentListParams = {
+    current: number;
+    pageSize: number;
+    query?: string
+    isDeleted?: string;
+    startTime?: string;
+    endTime?: string;
+    postId?: number;
+    authorId?: number;
+  };
+
   type Msg = {
     id: number;
     user_id: number;
@@ -187,6 +233,7 @@ declare namespace API {
     type: MsgType;
     pinned: number;
     created_time: string;
+    updated_time: string;
     author?: API.User
   };
 
