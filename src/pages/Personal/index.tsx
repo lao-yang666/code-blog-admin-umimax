@@ -13,9 +13,9 @@ import { FC } from 'react';
 
 import BlogLogs from './components/BlogLogs' // 博客日志
 import GitCommitLog from './components/GitCommitLog' // Git 更新日志
-import HotPost from './components/HotPost' // 主要技
-import LatestAnnouncement from './components/LatestAnnouncement' // 最新公告
+import HotPost from './components/MyPost' // 主要技
 import Logs from './components/Logs' // 主要技术栈
+import PersonTabs from './components/PersonTabs'
 import RenderContent from './components/RenderContent' // 顶部布局
 import StatisticChart from './components/StatisticChart' // 指标卡片
 import TechnologyStack from './components/TechnologyStack' // 主要技术栈
@@ -42,24 +42,7 @@ const Workbench: FC = () => {
   return (
     <PageContainer content={<RenderContent />} title={false}>
       <Space direction="vertical" size="middle" style={{ display: 'flex', marginTop: 16 }}>
-        <Row gutter={16}>
-          <Col span={14}>
-            <Space direction="vertical" size="middle" style={{ width: '100%' }}>
-              {/* 主要技术栈 */}
-              <TechnologyStack renderSecondary={renderSecondary} />
-              {/* 博客日志 */}
-              <Logs />
-            </Space>
-          </Col>
-          <Col span={10}>
-            <Space direction="vertical" size="middle" style={{ width: '100%' }}>
-              {/* 最新公告 */}
-              <HotPost />
-              {/* Git 更新日志 */}
-              <GitCommitLog />
-            </Space>
-          </Col>
-        </Row>
+        <PersonTabs></PersonTabs>
       </Space>
     </PageContainer>
   )

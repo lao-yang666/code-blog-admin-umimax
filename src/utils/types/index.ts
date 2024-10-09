@@ -113,6 +113,8 @@ export type InitialStateTypes = {
   Locales?: Record<string, any>;
   Settings?: Partial<LayoutSettings>;
   Collapsed?: boolean;
+  MenuChangeTime?: string;
+
 }
 
 /**

@@ -56,7 +56,7 @@ export enum ROUTES {
   ANNOUNCEMENT = '/administrative/announcement', // 智能行政-活动公告
   ORGANIZATION = '/administrative/organization', // 智能行政-组织管理
   JOBSMANAGEMENT = '/administrative/jobs-management', // 智能行政-岗位管理
-  PERSONALINFOMATION = '/personal-center/personal-information', // 个人中心-个人信息
+  PERSONALINFOMATION = '/Personal', // 个人中心-个人信息
   PERSONALSETTING = '/personal-center/personal-setting', // 个人中心-个人设置
   USERMANAGEMENT = '/system/user-management', // 系统设置-用户管理
   MENUMANAGEMENT = '/system/menu-management', // 系统设置-菜单管理

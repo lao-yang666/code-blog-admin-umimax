@@ -35,20 +35,20 @@ const PostList: React.FC<{ onPostClick: Function, postList: API.Post[], loading:
         description: {
           dataIndex: 'desc',
         },
-        actions: {
-          render: (text, row, index, action) => [
-            <a
-              onClick={() => {
-                action?.startEditable(row.id);
+        // actions: {
+        //   render: (text, row, index, action) => [
+        //     <a
+        //       onClick={() => {
+        //         action?.startEditable(row.id);
 
 
-              }}
-              key="link"
-            >
-              编辑
-            </a>,
-          ],
-        },
+        //       }}
+        //       key="link"
+        //     >
+        //       编辑
+        //     </a>,
+        //   ],
+        // },
       }}
     />
   );

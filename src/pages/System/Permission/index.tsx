@@ -279,7 +279,7 @@ const TableList: React.FC<unknown> = () => {
 
   return (
     <PageContainer header={{
-      title: '权限管理',
+      title: '',
     }}>
       <ProTable<API.buttonPermission>
         actionRef={actionRef}

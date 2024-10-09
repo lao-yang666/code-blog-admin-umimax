@@ -8,23 +8,23 @@ declare namespace API {
     content: string;
     published?: boolean;
     authorId?: number;
-    author: User;
+    author: API.User;
     category?: string;
     viewNum: number;
     likeNum: number;
-    collectNum:number;
+    collectNum: number;
     commentNum: number;
     commentList?: string;
     publish_time?: string;
     update_time?: string;
-    Comment: Comment[];
+    Comment: API.Comment[];
   };
 
   type PostNew = {
     draftId?: number;
     postId?: number;
     title: string;
-    author?: User;
+    author?: API.User;
     content: string;
     published?: boolean;
     authorId: number;
@@ -50,8 +50,8 @@ declare namespace API {
   };
 
   type PostControllerGetPublishedPostsParams = {
-    current: string;
-    pageSize: string;
+    current: string | number;
+    pageSize: string | number;
   };
 
   type PostControllerUpdateDraftParams = {
@@ -72,8 +72,8 @@ declare namespace API {
     status: number;
     created_time: string;
     updated_time: string;
-    Permission?: Permission[];
-    User?: User[];
+    Permission?: API.Permission[];
+    User?: API.User[];
   };
 
   type RoleControllerDeleteRoleParams = {
@@ -106,7 +106,7 @@ declare namespace API {
     created_time: string;
     updated_time: string;
     Role?: Role;
-    Menu?: Menu;
+    Menu?: API.Menu;
   };
 
   type PermissionControllerGetRoleUserAccessByidParams = {
@@ -145,7 +145,7 @@ declare namespace API {
     role_code?: string;
     role?: Role;
     name?: string;
-    gender: userSex;
+    gender: API.userSex;
     nickName?: string;
   };
 
@@ -158,11 +158,12 @@ declare namespace API {
   };
 
   type UserControllerGetUserListParams = {
-    current: string;
-    pageSize: string;
-    name: string;
-    nickName: string;
-    gender: 'woman' | 'man';
+    current: string | number;
+    pageSize: string | number;
+    name?: string;
+    nickName?: string;
+    type?: string
+    gender?: 'woman' | 'man';
   };
 
   type UserNew = {
@@ -174,7 +175,7 @@ declare namespace API {
     role_level?: string;
     role_code?: number;
     name?: string;
-    gender: userSex;
+    gender: API.userSex;
     nickName?: string;
   };
 
@@ -212,7 +213,7 @@ declare namespace API {
   };
 
   type CommentMap = Map<string, API.Comment>
-  
+
   type CommentControllerGetCommentListParams = {
     current: number;
     pageSize: number;
@@ -251,6 +252,55 @@ declare namespace API {
     pageSize: number;
     title?: string;
     type?: MsgType;
+  };
+
+  type TagClasses = {
+    id: number;
+    user_id: number;
+    name: string;
+    created_time: string;
+    updated_time: string;
+    author?: API.User
+  };
+
+  type TagClassesNew = {
+    user_id: number;
+    name: string;
+    created_time: string;
+    updated_time: string;
+    author?: API.User
+  };
+
+  type TagType = 'user' | 'post'
+
+  type Tag = {
+    id: number;
+    user_id: number;
+    name: string;
+    classesId: number;
+    type: TagType;
+    created_time: string;
+    updated_time: string;
+    author?: API.User
+    tagClasses?: TagClasses;
+  };
+
+  type TagNew = {
+    user_id: number;
+    name: string;
+    classesId: number;
+    type: TagType;
+    created_time: string;
+    updated_time: string;
+    author?: API.User
+  };
+
+  type TagControllerGetTagListParams = {
+    current: number;
+    pageSize: number;
+    classesId?: number;
+    name?: string;
+    type?: TagType;
   };
 
   type Logs = {

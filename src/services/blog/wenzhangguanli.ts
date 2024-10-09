@@ -113,6 +113,20 @@ export async function postControllerGetPublishedPosts(
   });
 }
 
+export async function postControllerGetMyPublishedPosts(
+  // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
+  params: API.PostControllerGetPublishedPostsParams,
+  options?: { [key: string]: any },
+) {
+  return request<any>('/post/mylist', {
+    method: 'GET',
+    params: {
+      ...params,
+    },
+    ...(options || {}),
+  });
+}
+
 
 export async function postControllerGetSelPosts(
   options?: { [key: string]: any },

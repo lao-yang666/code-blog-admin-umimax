@@ -19,7 +19,7 @@ import {
 import { useModel } from '@umijs/max'
 import ToolButton from './ToolButton'
 const { Title, Text } = Typography;
-const AuthorInfo: FC<{  post: API.Post }> = (props) => {
+const AuthorInfo: FC<{ post: API.Post }> = (props) => {
   const { post } = props
   const [isFollowing, setIsFollowing] = useState(false)
   const { initialState } = useModel('@@initialState');
@@ -64,9 +64,13 @@ const AuthorInfo: FC<{  post: API.Post }> = (props) => {
           <Space direction='vertical' style={{ marginLeft: 20 }}>
             <Title level={5}>
               <Text style={{ paddingRight: 10 }}>{post.author?.nickName}</Text>
-              <Tag color={randomTagColor()}>前端</Tag>
-              <Tag color={randomTagColor()}>大小姐</Tag>
-              <Tag color={randomTagColor()}>古灵精怪</Tag>
+              {post?.author?.userTag?.map((item: API.Tag) => {
+                return (
+                  <Tag key={item.id} color={randomTagColor()}>
+                    {item.name}
+                  </Tag>
+                )
+              })}
             </Title>
             <Text>一位非常棒的博主自信乐观</Text>
           </Space>
@@ -80,7 +84,8 @@ const AuthorInfo: FC<{  post: API.Post }> = (props) => {
         </Flex>
         {initialState.userInfo.id !== post.author?.id && <Flex justify='space-between' style={{ marginTop: 10 }}>
           {isFollowing ?
-            <Button type='primary' danger style={{ width: '48%' }} size='large' onClick={() => follow(0)}>取消关注</Button> :
+            <Button type='primary' danger style={{ width: '48%' }} size='large' onClick={() => follow(0)}>取消关注</Button>
+            :
             <Button type='primary' style={{ width: '48%' }} size='large' onClick={() => follow(1)}>关注</Button>}
           <Button style={{ width: '48%' }} size='large'>私信</Button>
         </Flex>}

@@ -1,3 +1,4 @@
+import * as AllIcons from '@ant-design/icons';
 import {
   ActionType,
   PageContainer,
@@ -6,16 +7,21 @@ import {
   ProTable,
 } from '@ant-design/pro-components';
 import { useModel } from '@umijs/max';
-import { Drawer, message } from 'antd';
+import { Divider, Drawer, List, message, Select, Space } from 'antd';
 import React, { useRef, useState } from 'react';
 
 import AccessButton from '@/components/AccessButton';
 import DiyForm from '@/components/DiyForm';
 import services from '@/services/blog';
+import { InitialStateTypes } from '@/utils/types';
+
+import MenuIconSel, { CustomIcon } from './components/MenuIconSel'
 const { roleControllerGetSelRoleList: getRoleOption } = services.jiaoseguanli;
 const { menuControllerCreateMenu: addMenu, menuControllerGetSelMenuList: queryMenuList,
   menuControllerDeleteMenu: deleteMenu, menuControllerUpdateMenu: modifyMenu } =
   services.caidanguanli;
+
+const iconNames = Object.keys(AllIcons);
 
 const permissionEnum: Record<string, any> = {
   '0': { text: '只读', status: '只读', key: 'read' },
@@ -96,14 +102,6 @@ const handleDel = async (id: string | undefined) => {
   }
 };
 
-const getRoleList = async () => {
-  const { data } = await getRoleOption();
-  return (data ?? []).map((item: API.Role) => ({
-    label: item.role_name,
-    value: item.id,
-  }))
-};
-
 
 const TableList: React.FC<unknown> = () => {
   const [modalVisible, handleModalVisible] = useState<boolean>(false);
@@ -114,7 +112,7 @@ const TableList: React.FC<unknown> = () => {
   const [parentId, setParentId] = useState<number>();
   const actionRef = useRef<ActionType>();
   const [row, setRow] = useState<API.Menu>();
-  const { initialState } = useModel('@@initialState');
+  const { initialState, setInitialState } = useModel('@@initialState');
   const formColumns: ProColumns<API.Menu>[] = [
     {
       title: '菜单名称',
@@ -131,6 +129,21 @@ const TableList: React.FC<unknown> = () => {
           },
         ],
       },
+    },
+    {
+      title: '菜单图标',
+      dataIndex: 'icon',
+      initialValue: currentRecord?.icon,
+
+      fieldProps: {
+        readOnly: tableAction === 'edit',
+      },
+      hideInSearch: true,
+      align: 'center',
+      render: (dom, entity) => <CustomIcon type={entity.icon}></CustomIcon>,
+      renderFormItem: () => <MenuIconSel onChange={(value: any) => {
+        currentRecord.icon = value
+      }} />,
     },
     {
       title: '父级菜单标识',
@@ -170,15 +183,6 @@ const TableList: React.FC<unknown> = () => {
       dataIndex: 'redirect',
       hideInSearch: true,
       initialValue: currentRecord?.redirect,
-    },
-    {
-      title: '图标',
-      dataIndex: 'icon',
-      valueType: 'text',
-      hideInForm: true,
-      hideInSearch: true,
-      initialValue: currentRecord?.icon,
-      render: () => '********',
     },
     {
       title: '状态',
@@ -301,9 +305,10 @@ const TableList: React.FC<unknown> = () => {
     let callApi = handleAdd;
     if (tableAction === 'edit') {
       callApi = handleUpdate
-      Object.assign(value, { menu_id: currentRecord.menu_id })
+      Object.assign(value, { menu_id: currentRecord.menu_id }, { icon: currentRecord.icon })
+
     } else {
-      Object.assign(value, { founder: initialState?.userInfo?.id })
+      Object.assign(value, { founder: initialState?.userInfo?.id }, { icon: currentRecord.icon })
     }
     const success = await callApi(value);
     if (success) {
@@ -322,7 +327,7 @@ const TableList: React.FC<unknown> = () => {
   return (
     <PageContainer
       header={{
-        title: '菜单管理',
+        title: '',
       }}
     >
       <ProTable<API.Menu>
@@ -359,8 +364,13 @@ const TableList: React.FC<unknown> = () => {
             新增菜单
           </AccessButton>,
         ]}
-        request={async (params, sorter, filter) => {
+        request={async () => {
           const { data, success } = await queryMenuList();
+          setInitialState((s: InitialStateTypes) => ({
+            ...s,
+            MenuChangeTime: new Date().getTime(),
+            MenuData: data || [],
+          }));
           return {
             data: data || [],
             success,

@@ -78,7 +78,7 @@ console.log(data,'data')
   return (
     <PageContainer
       header={{
-        title: '评论管理',
+        title: '',
       }}
     >
       <Row>

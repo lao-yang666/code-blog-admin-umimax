@@ -29,18 +29,20 @@ const HotPost: FC = () => {
         loading={loading}
         dataSource={postList}
         renderItem={(record: API.Post) => (
-          <List.Item style={{ padding: '10px 0' }} actions={[<Tag color={randomTagColor()} key={record.id}>{
-
-          }</Tag>]}>
+          <List.Item style={{ padding: '10px 0' }} actions={record?.PostTag?.map((item) => (
+            <Tag color={randomTagColor()} key={item.tag_id}>{
+              item.name
+            }</Tag>)
+          )}>
             <List.Item.Meta
-              avatar={<Avatar src={record.avatar_url} />}
               title={<a onClick={() => history.push(`/Post/PostDetail?id=${record.id}`)}>{record.title}</a>}
               description={record.author?.nickName}
             />
           </List.Item>
-        )}
+        )
+        }
       />
-    </Card>
+    </Card >
   )
 }
 export default HotPost

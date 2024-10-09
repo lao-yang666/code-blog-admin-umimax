@@ -87,7 +87,7 @@ const ToolButton: React.FC<{ change: Function }> = (props) => {
 
   return (
     <>
-      <FloatButton.Group shape="circle" style={{ left: 204, top: '30%' }}>
+      <FloatButton.Group shape="circle" style={{ left: 'calc(12.5% - 60px)', top: '30%' }}>
         <FloatButton icon={<LikeTwoTone twoToneColor={liked ? '#222' : ''} />} onClick={like} badge={{ count: post.likeNum }} />
         <FloatButton icon={<StarTwoTone twoToneColor={colleced ? '#eb2f0' : '#fa8c16'} />} onClick={star} badge={{ count: post.collectNum }} />
         <FloatButton icon={<MessageTwoTone twoToneColor="#52c41a" />} onClick={comment} badge={{ count: post.Comment.length }} />

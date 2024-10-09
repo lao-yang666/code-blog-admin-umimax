@@ -9,7 +9,7 @@
 
 import { Settings as LayoutSettings } from '@ant-design/pro-components'; // 高级组件
 import { addLocale, history } from '@umijs/max';
-import { assign, eq, forEach, get, isEmpty, isNil } from 'lodash-es'
+import { assign, eq, forEach, isEmpty, isNil } from 'lodash-es'
 
 import { BasiLayout } from '@/components/BasiLayout'; // 全局 layout 布局
 import TabsLayout, { TabsLayoutProps } from '@/components/TabsLayout' // 多标签页配置
@@ -58,6 +58,7 @@ export async function getInitialState() {
     Access_token: ACCESS_TOKEN,
     Settings: Layout_Settings,
     Collapsed: false,
+    MenuChangeTime: '',
     Locales,
   }
   console.log(initialState, 'initia===app=app');

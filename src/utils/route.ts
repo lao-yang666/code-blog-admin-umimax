@@ -138,6 +138,8 @@ export function parseRoutes(
 export const getRoutes = (menus: API.Menu[] | undefined): any => {
   if (!menus) return [];
   return menus.map((item: API.Menu) => {
+    console.log(item, 'item')
+
     const route = {
       path: item.path,
       name: item.name,

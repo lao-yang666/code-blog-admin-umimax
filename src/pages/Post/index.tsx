@@ -5,12 +5,12 @@ import {
   ProTable,
 } from '@ant-design/pro-components';
 import { history, useModel } from '@umijs/max';
-import { message, Popconfirm } from 'antd';
+import { message, Popconfirm, Tag } from 'antd';
 import React, { useRef, useState } from 'react';
 
 import AccessButton from '@/components/AccessButton';
 import services from '@/services/blog';
-
+import { randomTagColor } from '@/utils';
 const { postControllerGetPublishedPosts: queryPostList,
   postControllerDeleteManyPost: deleteManyPost,
   postControllerDeletePost: deletePost, postControllerCreateDraft: addDraft } =
@@ -114,6 +114,14 @@ const TableList: React.FC<unknown> = () => {
       },
     },
     {
+      title: '标签',
+      dataIndex: 'content',
+      hideInSearch: true,
+      hideInForm: true,
+      render: (_, record) => record?.PostTag?.map((item: API.Tag) =>
+        <Tag key={item.id} color={randomTagColor()}>{item.name}</Tag>),
+    },
+    {
       title: '发布状态',
       dataIndex: 'published',
       hideInForm: true,
@@ -166,6 +174,11 @@ const TableList: React.FC<unknown> = () => {
       valueType: 'option',
       render: (_, record) => (
         <>
+         <AccessButton hidedivider={true} permission_key='post-postlist-edit-tag' type='link' onClick={() => {
+            handleEdit(record, initialState?.userInfo?.id as number);
+          }}>
+            设置标签
+          </AccessButton>
           <AccessButton hidedivider={true} permission_key='post-postlist-edit' type='link' onClick={() => {
             handleEdit(record, initialState?.userInfo?.id as number);
           }}>
@@ -193,7 +206,7 @@ const TableList: React.FC<unknown> = () => {
   return (
     <PageContainer
       header={{
-        title: '文章管理',
+        title: '',
       }}
     >
       <ProTable<API.Post>

@@ -10,11 +10,11 @@ import { ProConfigProvider, SettingDrawer, Settings as LayoutSettings } from '@a
 import { history, InitDataType, Link, RunTimeLayoutConfig } from '@umijs/max';
 import { useBoolean } from 'ahooks'
 import { Space, Typography } from 'antd'
-import { eq, last } from 'lodash-es'
+import { eq } from 'lodash-es'
 
-import Footer from '@/components/Footer'; // 全局底部版权组件
+// import Footer from '@/components/Footer'; // 全局底部版权组件
+import { CustomIcon } from '@/pages/System/Menu/components/MenuIconSel';
 import { getLocalStorageItem, getToken, setLocalStorageItem } from '@/utils'
-import { IconFont } from '@/utils/const'
 import { LOCAL_STORAGE, ROUTES } from '@/utils/enums'
 import { getMenuListByRoutes } from '@/utils/route';
 import type { InitialStateTypes } from '@/utils/types'
@@ -58,10 +58,13 @@ export const BasiLayout: RunTimeLayoutConfig = ({ initialState, setInitialState 
 			}
 		},
 		menu: {
-			params: initialState?.CurrentRoleId,
+			params: initialState?.MenuChangeTime,
 			request: async () => {
 				return getMenuListByRoutes(initialState?.MenuData ?? [])
 			},
+		},
+		postMenuData: (menuData: any) => {
+			return menuData.map((item: any) => { return { ...item, icon: <CustomIcon type={item.icon} /> } })
 		},
 		/* 自定义面包屑 */
 		// breadcrumbProps: {
@@ -81,8 +84,8 @@ export const BasiLayout: RunTimeLayoutConfig = ({ initialState, setInitialState 
 					<Space>
 						{/* 分组布局不用渲染图标，避免重复 */}
 						{!(LAYOUT?.siderMenuType === 'group') &&
-							menuItemProps.pro_layout_parentKeys?.length &&
-							<IconFont type={toString(menuItemProps.icon)} />}
+							menuItemProps.pro_layout_parentKeys?.length > 0 &&
+							<CustomIcon type={menuItemProps.icon} />}
 						<Paragraph
 							ellipsis={{ rows: 1, tooltip: defaultDom }}
 							style={{ marginBottom: 0 }}>

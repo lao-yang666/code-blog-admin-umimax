@@ -4,6 +4,7 @@ import React, { PropsWithChildren } from 'react';
 import AccessButton from '@/components/AccessButton';
 import services from '@/services/blog';
 import { useModel } from '@umijs/max';
+import dayjs from 'dayjs'
 const { roleControllerGetSelRoleList: getRoleOption } = services.jiaoseguanli;
 const { commentControllerGetCommentList: queryCommentList,
   commentControllerDeleteComment: deleteComment } = services.comment;
@@ -49,72 +50,34 @@ const CommentTable: React.FC<PropsWithChildren<MenuTableProps>> = (props) => {
       title: '作者',
       dataIndex: 'userId',
       request: getRoleList,
-      hideInForm: true,
-      hideInSearch: true,
       render: (_, record) => record?.author?.nickName,
     },
     {
       title: '评论内容',
       dataIndex: 'content',
       valueType: 'text',
-      formItemProps: {
-        rules: [
-          {
-            required: true,
-            message: '内容为必填项',
-          },
-        ],
-      },
-    },
-    {
-      title: '文章',
-      dataIndex: 'title',
-      hideInSearch: true,
-      formItemProps: {
-        rules: [
-          {
-            required: true,
-            message: '标题为必填项',
-          },
-        ],
-      },
     },
     {
       title: '点赞次数',
-      dataIndex: 'pinned',
+      dataIndex: 'likeNum',
       valueType: 'text',
-      hideInSearch: true,
-      hideInForm: true,
-      render: (_, record) => record?.likeNum,
     },
     {
       title: '回复次数',
       dataIndex: 'pinned',
+
       valueType: 'text',
-      hideInSearch: true,
-      hideInForm: true,
+      render: (_, record) => record?.replies?.length,
     },
     {
       title: '状态',
-      dataIndex: 'status',
+      dataIndex: 'isDeleted',
       valueType: 'select',
-      fieldProps: {
-        options: [
-          {
-            label: '开启',
-            value: 1,
-          },
-          {
-            label: '禁用',
-            value: 0,
-          },
-        ],
-      },
       render: (_, record) => (
         <Switch
-          checkedChildren="启用"
-          unCheckedChildren="禁用"
-          defaultChecked={record.status === 1}
+          checkedChildren="显示"
+          unCheckedChildren="隐藏"
+          defaultChecked={record.status == 1}
           onChange={(checked) => {
             // handleSwitch(record.id, checked ? 1 : 0)
           }} />
@@ -124,8 +87,7 @@ const CommentTable: React.FC<PropsWithChildren<MenuTableProps>> = (props) => {
       title: '评论时间',
       dataIndex: 'created_time',
       valueType: 'text',
-      hideInSearch: true,
-      hideInForm: true,
+      render:(_, record)=> dayjs(record.created_time).format('YYYY-MM-DD HH:mm:ss')
     },
     {
       title: '操作',
@@ -151,6 +113,7 @@ const CommentTable: React.FC<PropsWithChildren<MenuTableProps>> = (props) => {
       <Table
         rowKey="id"
         bordered
+        childrenColumnName='replies'
         columns={columns}
         dataSource={commentList}
       />

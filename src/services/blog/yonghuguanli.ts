@@ -99,6 +99,20 @@ export async function userControllerGetStatistic(id:number) {
   });
 }
 
+/** 获取首页统计 */
+export async function userControllerGetHomeStatistic() {
+  return request<any>(`/user/allStatistic`, {
+    method: 'GET',
+  });
+}
+
+/** 获取所有用户排名 */
+export async function userControlleListRank() {
+  return request<any>(`/user/userListRank`, {
+    method: 'GET',
+  });
+}
+
 /** 新增用户 POST /user/new */
 export async function userControllerCreateUser(
   body: API.UserNew,

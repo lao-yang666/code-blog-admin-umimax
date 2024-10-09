@@ -208,6 +208,18 @@ const TableList: React.FC<unknown> = () => {
         <>
           <AccessButton
             hidedivider={true}
+            permission_key='system-user-edit-tag'
+            type='link'
+            level={record.role_level}
+            onClick={() => {
+              handleModalVisible(true);
+              setCurrentRecord(record);
+              handleTableAction('edit')
+            }}>
+            设置标签
+          </AccessButton>
+          <AccessButton
+            hidedivider={true}
             permission_key='system-user-edit'
             type='link'
             level={record.role_level}
@@ -260,7 +272,7 @@ const TableList: React.FC<unknown> = () => {
   return (
     <PageContainer
       header={{
-        title: '用户管理',
+        title: '',
       }}
     >
       <ProTable<API.User>
