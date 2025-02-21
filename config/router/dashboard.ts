@@ -1,32 +1,14 @@
 /*
  * @Description: 指示面板模块
  * @Version: 2.0
- * @Author: Cyan
+ * @Author: Yang
  * @Date: 2022-09-08 15:12:38
- * @LastEditors: Cyan
+ * @LastEditors: Yang
  * @LastEditTime: 2023-08-08 09:28:47
  */
 export default {
-    path: '/dashboard',
-    name: 'dashboard',
+    path: '/environmental-dependence',
+    name: '环境依赖',
+    component: './Dashboard/EnvironmentalDependence',
     exact: true,
-    routes: [
-        {
-            path: '/dashboard',
-            redirect: '/dashboard/work-bench',
-            exact: true,
-        },
-        {
-            path: '/dashboard/work-bench',
-            name: 'work-bench',
-            component: './Dashboard/Workbench',
-            exact: true,
-        },
-        {
-            path: '/dashboard/environmental-dependence',
-            name: 'environmental-dependence',
-            component: './Dashboard/EnvironmentalDependence',
-            exact: true,
-        },
-    ],
 }

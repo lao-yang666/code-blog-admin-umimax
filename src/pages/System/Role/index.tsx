@@ -282,15 +282,15 @@ const TableList: React.FC<unknown> = () => {
             }}>
             分配人员
           </AccessButton>
-          <AccessButton
+          <a
             permission_key='system-role-list-menu'
             type='link'
             level={record.sort}
             onClick={() => {
-              history.push(`/System/RoleMenu?id=${record.id}`);
+              history.push(`/system/roleMenu?id=${record.id}`);
             }}>
             分配菜单
-          </AccessButton>
+          </a>
           <AccessButton permission_key='system-role-list-detail' type='link' onClick={() => {
             queryRoleMenuAccess(record.id)
             setCurrentRecord(record);

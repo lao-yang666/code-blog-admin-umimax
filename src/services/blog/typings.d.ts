@@ -17,6 +17,7 @@ declare namespace API {
     commentList?: string;
     publish_time?: string;
     update_time?: string;
+    PostTag?: API.Post_Tag[];
     Comment: API.Comment[];
   };
 
@@ -37,6 +38,12 @@ declare namespace API {
     update_time?: string;
   };
 
+  type Post_Tag = {
+    classesId: number;
+    name: string;
+    post_id: number;
+    tag: API.Tag;
+  }
   type PostControllerDeleteDraftParams = {
     id: string;
   };
@@ -147,7 +154,15 @@ declare namespace API {
     name?: string;
     gender: API.userSex;
     nickName?: string;
+    userTag?: API.User_Tag[];
   };
+  
+  type User_Tag = {
+    classesId: number;
+    name: string;
+    user_id: number;
+    tag: API.Tag;
+  }
 
   type UserControllerDeleteDraftParams = {
     id: string;

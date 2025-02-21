@@ -1,9 +1,9 @@
 /*
  * @Description: 默认配置文件
  * @Version: 2.0
- * @Author: Cyan
+ * @Author: Yang
  * @Date: 2022-09-08 11:09:02
- * @LastEditors: Cyan
+ * @LastEditors: Yang
  * @LastEditTime: 2022-12-29 14:25:54
  */
 import { Settings as LayoutSettings } from '@ant-design/pro-components';

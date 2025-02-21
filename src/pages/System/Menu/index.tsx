@@ -118,9 +118,9 @@ const TableList: React.FC<unknown> = () => {
       title: '菜单名称',
       dataIndex: 'name',
       initialValue: currentRecord?.name,
-      fieldProps: {
-        readOnly: tableAction === 'edit',
-      },
+      // fieldProps: {
+      //   readOnly: tableAction === 'edit',
+      // },
       formItemProps: {
         rules: [
           {

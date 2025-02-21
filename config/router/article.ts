@@ -1,9 +1,9 @@
 /*
  * @Description: 文章管理
  * @Version: 2.0
- * @Author: Cyan
+ * @Author: Yang
  * @Date: 2022-09-08 15:12:38
- * @LastEditors: 白雾茫茫丶
+ * @LastEditors: Yang
  * @LastEditTime: 2023-08-28 09:34:25
  */
 export default {

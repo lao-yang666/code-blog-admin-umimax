@@ -1,14 +1,14 @@
 /*
  * @Description: 技术文档模块
  * @Version: 2.0
- * @Author: Cyan
+ * @Author: Yang
  * @Date: 2023-08-11 16:16:16
- * @LastEditors: Cyan
+ * @LastEditors: Yang
  * @LastEditTime: 2023-08-11 17:43:49
  */
 export default {
   path: '/technical-document',
-  name: 'technical-document',
+  name: '技术文档',
   access: 'adminRouteFilter',
   exact: true,
   routes: [
@@ -21,25 +21,27 @@ export default {
       path: '/technical-document/react',
       name: 'react',
       component: './TechnicalDocument/React',
-      access: 'adminRouteFilter',
       exact: true,
     },
     {
-      path: '/technical-document/nest',
-      name: 'nest',
-      component: './TechnicalDocument/Nest',
-      access: 'adminRouteFilter',
+      path: '/technical-document/ant',
+      name: 'ant',
+      component: './TechnicalDocument/AntDesign',
       exact: true,
     },
     {
-      path: 'https://ant.design/',
-      name: 'ant-design',
-      access: 'adminRouteFilter',
-    },
-    {
-      path: 'https://v3.umijs.org/',
+      path: '/technical-document/umi',
       name: 'umi',
-      access: 'adminRouteFilter',
+      component: './TechnicalDocument/Umi',
+      exact: true,
+    },
+    {
+      path: 'https://prisma.org.cn/',
+      name: 'prisma',
+    },
+    {
+      path: 'https://nest.nodejs.cn/',
+      name: 'nest',
     },
   ],
 }

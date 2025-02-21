@@ -1,9 +1,9 @@
 /*
  * @Description: 系统设置模块
  * @Version: 2.0
- * @Author: Cyan
+ * @Author: Yang
  * @Date: 2022-09-08 15:12:38
- * @LastEditors: Cyan
+ * @LastEditors: Yang
  * @LastEditTime: 2023-03-17 16:50:12
  */
 export default {
@@ -66,7 +66,7 @@ export default {
     },
     {
       name: '分配角色菜单',
-      path: '/system/role/roleMenu',
+      path: '/system/roleMenu',
       component: './System/Role/roleMenu',
       hideInMenu: true,
       exact: true,

@@ -3,7 +3,7 @@
  * @Version: 2.0
  * @Author: laoyang
  * @Date: 2023-08-08 14:55:20
- * @LastEditors: Cyan
+ * @LastEditors: Yang
  * @LastEditTime: 2023-08-08 15:00:13
  */
 import { TinyArea } from '@ant-design/charts';

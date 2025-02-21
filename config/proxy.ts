@@ -1,9 +1,9 @@
 /*
  * @Description: 接口代理
  * @Version: 2.0
- * @Author: Cyan
+ * @Author: Yang
  * @Date: 2022-09-08 15:54:03
- * @LastEditors: Cyan
+ * @LastEditors: Yang
  * @LastEditTime: 2022-12-27 18:06:24
  */
 /**
@@ -22,7 +22,7 @@ export default {
    * @description: 后端代理配置
    * @name 详细的代理配置
    * @doc https://github.com/chimurai/http-proxy-middleware
-   * @author: Cyan
+   * @author: Yang
    */
   dev: {
     '/xmw/': {

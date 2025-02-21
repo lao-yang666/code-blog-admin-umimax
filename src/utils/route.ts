@@ -164,21 +164,39 @@ export const getRoutes = (menus: API.Menu[] | undefined): any => {
 }
 
 
-export const formatRoute = (menu: API.Menu): any => {
-  const extraProperties = JSON.parse(menu.extraProperties || '{}')
-  return {
-    path: menu.path,
-    name: menu.name,
-    icon: menu.icon,
-    menu_id: menu.menu_id,
-    access: 'adminRouteFilter',
-    wrappers: [
-      '@/wrappers/auth',
-    ],
-    hideInMenu: menu.hideInMenu === 0,
-    hideInBreadcrumb: menu.hideInBreadcrumb === 0,
-    hideChildrenInMenu: menu.hideChildrenInMenu === 0,
-    ...extraProperties
+export const formatRoute = (menu: API.Menu): API.RouteMenu => {
+  try {
+    const extraProperties = JSON.parse(menu.extraProperties || '{}')
+    const route = {
+      path: menu.path,
+      name: menu.name,
+      icon: menu.icon,
+      menu_id: menu.menu_id,
+      access: 'adminRouteFilter',
+      wrappers: [
+        '@/wrappers/auth',
+      ],
+      hideInMenu: menu.hideInMenu === 0,
+      hideInBreadcrumb: menu.hideInBreadcrumb === 0,
+      hideChildrenInMenu: menu.hideChildrenInMenu === 0,
+      ...extraProperties
+    }
+
+    return route;
+  } catch (error) {
+    return {
+      path: menu.path,
+      name: menu.name,
+      icon: menu.icon,
+      menu_id: menu.menu_id,
+      access: 'adminRouteFilter',
+      wrappers: [
+        '@/wrappers/auth',
+      ],
+      hideInMenu: menu.hideInMenu === 0,
+      hideInBreadcrumb: menu.hideInBreadcrumb === 0,
+      hideChildrenInMenu: menu.hideChildrenInMenu === 0,
+    }
   }
 }
 

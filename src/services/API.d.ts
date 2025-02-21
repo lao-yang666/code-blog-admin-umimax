@@ -172,5 +172,33 @@ declare global {
       params: Record<string, any>; // 请求参数
       api_url: string; // 请求地址
     } & Pick<USERMANAGEMENT, 'user_id'>;
+
+    type RouteMenu = {
+      menu_id: string | number; // 菜单id
+      name: string; // 国际化对应的name
+      menu_type: MenuTypes; // 菜单类型
+      path?: string; // 路由url
+      icon?: string; // 菜单图标
+      component?: string; // 菜单对应的文件路径
+      redirect?: string; // 路由重定向地址
+      target?: TargetTypes; // 当path是一个url，点击新窗口打开
+      permission?: string; // 菜单标识(页面按钮权限控制)
+      layout?: LayoutTypes; // 是否显示layout布局
+      navTheme?: MenuTheme; // 导航菜单的主题
+      headerTheme?: MenuTheme; // 顶部导航的主题，mix 模式生效
+      hideChildrenInMenu: Boolean; // 是否隐藏子路由
+      hideInMenu: Boolean; // 是否隐藏菜单，包括子路由
+      hideInBreadcrumb: Boolean; // 是否在面包屑中隐藏
+      headerRender: Boolean; // 是否显示顶栏
+      footerRender: Boolean; // 是否显示页脚
+      menuRender: Boolean; // 当前路由是否展示菜单
+      menuHeaderRender: Boolean; // 当前路由是否展示菜单顶栏
+      flatMenu: Boolean; // 子项往上提，只是不展示父菜单
+      fixedHeader: Boolean; // 固定顶栏
+      fixSiderbar: Boolean; // 固定菜单
+      routes?: MENUMANAGEMENT[];
+      children?: MENUMANAGEMENT[];
+    } & TableTimes & LOCALESLANGAll & Omit<CommonTypes, 'leader' | 'describe'>;
   }
+
 }

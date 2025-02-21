@@ -3,7 +3,7 @@
  * @Version: 2.0
  * @Author: laoyang
  * @Date: 2023-08-08 14:50:57
- * @LastEditors: Cyan
+ * @LastEditors: Yang
  * @LastEditTime: 2023-08-08 15:20:05
  */
 import { StatisticCard } from '@ant-design/pro-components';

@@ -2,11 +2,10 @@ import {
   ActionType,
   PageContainer,
   ProColumns,
-  ProDescriptions,
   ProTable,
 } from '@ant-design/pro-components';
 import { useModel } from '@umijs/max';
-import { Drawer, message, Switch, Tag } from 'antd';
+import { message, Tag } from 'antd';
 import React, { useRef, useState } from 'react';
 
 import AccessButton from '@/components/AccessButton';

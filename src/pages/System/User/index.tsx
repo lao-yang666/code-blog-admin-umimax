@@ -6,12 +6,14 @@ import {
   ProTable,
 } from '@ant-design/pro-components';
 import { useModel } from '@umijs/max';
-import { Drawer, message } from 'antd';
+import { Drawer, message, Tag } from 'antd';
 import React, { useRef, useState } from 'react';
 
 import AccessButton from '@/components/AccessButton';
 import DiyForm from '@/components/DiyForm';
 import services from '@/services/blog';
+import TagSetModal from '@/components/Modals/TagSetModal';
+import { randomTagColor } from '@/utils';
 const { roleControllerGetSelRoleList: getRoleOption } = services.jiaoseguanli;
 const { userControllerCreateUser: addUser, userControllerGetUserList: queryUserList,
   userControllerDeleteDraft: deleteUser, userControllerUpdateUser: modifyUser } =
@@ -89,9 +91,15 @@ const TableList: React.FC<unknown> = () => {
   const [tableAction, handleTableAction] =
     useState<string>('add');
   const { initialState } = useModel('@@initialState');
+  const [TagSetModalVisible, setTagSetModalVisible] = useState(false);
   const [currentRecord, setCurrentRecord] = useState<API.User>({} as any);
   const actionRef = useRef<ActionType>();
   const [row, setRow] = useState<API.User>();
+
+  const handleSet = (record: API.User) => {
+    setCurrentRecord(record)
+    setTagSetModalVisible(true);
+  }
 
   const getRoleList = async () => {
     const { data } = await getRoleOption();
@@ -127,6 +135,14 @@ const TableList: React.FC<unknown> = () => {
       dataIndex: 'nickName',
       valueType: 'text',
       initialValue: currentRecord?.nickName,
+    },
+    {
+      title: '标签',
+      dataIndex: 'content',
+      hideInSearch: true,
+      hideInForm: true,
+      render: (_, record) => record?.userTag?.map((item: API.Tag) =>
+        <Tag key={item.id} color={randomTagColor()}>{item.name}</Tag>),
     },
     {
       title: '手机号码',
@@ -208,18 +224,6 @@ const TableList: React.FC<unknown> = () => {
         <>
           <AccessButton
             hidedivider={true}
-            permission_key='system-user-edit-tag'
-            type='link'
-            level={record.role_level}
-            onClick={() => {
-              handleModalVisible(true);
-              setCurrentRecord(record);
-              handleTableAction('edit')
-            }}>
-            设置标签
-          </AccessButton>
-          <AccessButton
-            hidedivider={true}
             permission_key='system-user-edit'
             type='link'
             level={record.role_level}
@@ -244,6 +248,11 @@ const TableList: React.FC<unknown> = () => {
               actionRef.current?.reloadAndRest?.();
             }}>
             删除
+          </AccessButton>
+          <AccessButton permission_key='post-postlist-edit-tag' type='link' onClick={() => {
+            handleSet(record);
+          }}>
+            设置标签
           </AccessButton>
         </>
       ),
@@ -322,6 +331,12 @@ const TableList: React.FC<unknown> = () => {
         }}
         columns={formColumns}
       />
+      <TagSetModal<API.User>
+        currentRecord={currentRecord}
+        modalVisible={TagSetModalVisible}
+        tagType="user"
+        onCancel={(flag) => { setTagSetModalVisible(false); flag && actionRef.current?.reloadAndRest?.() }}>
+      </TagSetModal>
       <DiyForm
         title={tableAction === 'edit' ? '编辑用户' : '新增用户'}
         modalVisible={modalVisible}

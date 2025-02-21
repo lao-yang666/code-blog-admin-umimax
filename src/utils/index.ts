@@ -275,6 +275,9 @@ export const renderColumnsStateMap = (MENU_CFG: string[] = []) => {
  * @author: laoyang
  */
 export const randomTagColor = () => {
-  const colors = ['magenta', 'red', 'volcano', 'orange', 'gold', 'lime', 'green', 'cyan', 'blue', 'geekblue', 'purple']
-  return sample(colors)
+  const colors = ['magenta', 'red', 'volcano', 'orange', 'gold', 'lime', 'green', 'blue', 'geekblue', 'purple']
+
+  const color = sample(colors);
+  console.log(color,'color')
+  return color;
 }

@@ -88,7 +88,7 @@ export async function tagControllerGetTagList(
 /** 获取不分页的消息列表 GET /tag/sellist */
 export async function tagControllerGetSelTagList(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
-  params: { type: string },
+  params?: { type: string },
   options?: { [key: string]: any },
 ) {
   return request<any>('/tag/selist', {
@@ -276,6 +276,35 @@ export async function tagControllerDeletePostTag(
   const { tag_id, post_id } = params;
   return request<any>(`/tag/del/postTag/${tag_id}/${post_id}`, {
     method: 'DELETE',
+    ...(options || {}),
+  });
+}
+
+export async function tagControllerUpdatePostTags(
+  // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
+  body: { tag_ids: number[]; post_id: number;},
+  options?: { [key: string]: any },
+) {
+  return request<any>(`/tag/post/update`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    data: body,
+    ...(options || {}),
+  });
+}
+export async function tagControllerUpdateUserTags(
+  // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
+  body: { tag_ids: number[]; user_id: number; },
+  options?: { [key: string]: any },
+) {
+  return request<any>(`/tag/user/update`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    data: body,
     ...(options || {}),
   });
 }

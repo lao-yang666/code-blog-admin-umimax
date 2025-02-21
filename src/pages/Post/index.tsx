@@ -11,6 +11,7 @@ import React, { useRef, useState } from 'react';
 import AccessButton from '@/components/AccessButton';
 import services from '@/services/blog';
 import { randomTagColor } from '@/utils';
+import TagSetModal from '@/components/Modals/TagSetModal';
 const { postControllerGetPublishedPosts: queryPostList,
   postControllerDeleteManyPost: deleteManyPost,
   postControllerDeletePost: deletePost, postControllerCreateDraft: addDraft } =
@@ -23,7 +24,6 @@ const { userControllerGetSelUserList: queryUserList } = services.yonghuguanli
  * @param selectedRows
  */
 const handleRemove = async (selectedRows: API.PostControllerDeleteDraftParams[]) => {
-  console.log(selectedRows, '??????');
   const hide = message.loading('正在删除');
   if (!selectedRows.length) return true;
   try {
@@ -85,7 +85,8 @@ const TableList: React.FC<unknown> = () => {
   const actionRef = useRef<ActionType>();
   const [params, setParams] = useState({});
   const { initialState } = useModel('@@initialState');
-
+  const [TagSetModalVisible, setTagSetModalVisible] = useState(false);
+  const [currentRecord, setCurrentRecord] = useState<API.Post>({} as any);
   const columns: ProColumns<API.Post>[] = [
     {
       title: '标题',
@@ -174,11 +175,6 @@ const TableList: React.FC<unknown> = () => {
       valueType: 'option',
       render: (_, record) => (
         <>
-         <AccessButton hidedivider={true} permission_key='post-postlist-edit-tag' type='link' onClick={() => {
-            handleEdit(record, initialState?.userInfo?.id as number);
-          }}>
-            设置标签
-          </AccessButton>
           <AccessButton hidedivider={true} permission_key='post-postlist-edit' type='link' onClick={() => {
             handleEdit(record, initialState?.userInfo?.id as number);
           }}>
@@ -195,6 +191,11 @@ const TableList: React.FC<unknown> = () => {
           }}>
             删除
           </AccessButton>
+          <AccessButton permission_key='post-postlist-edit-tag' type='link' onClick={() => {
+            handleSet(record);
+          }}>
+            设置标签
+          </AccessButton>
         </>
       ),
     },
@@ -203,6 +204,11 @@ const TableList: React.FC<unknown> = () => {
     setParams(allValues)
     console.log(changedValues, allValues);
   };
+
+  const handleSet = (record: API.Post) => {
+    setCurrentRecord(record)
+    setTagSetModalVisible(true);
+  }
   return (
     <PageContainer
       header={{
@@ -270,7 +276,14 @@ const TableList: React.FC<unknown> = () => {
         rowSelection={{}}
         columns={columns}
       />
+      <TagSetModal<API.Post>
+        currentRecord={currentRecord}
+        modalVisible={TagSetModalVisible}
+        tagType="post"
+        onCancel={(flag) => { setTagSetModalVisible(false); flag && actionRef.current?.reloadAndRest?.() }}>
+      </TagSetModal>
     </PageContainer>
+
   );
 };
 
