@@ -90,32 +90,32 @@ const Page = () => {
       <LoginFormPage
         message={<div style={{ color: 'red', textAlign: 'center' }}>{message}</div>}
         onFinish={onSubmit}
-        // title="崩铁!启动"
-        // backgroundImageUrl={backURl}
-        // subTitle="一发入魂,十连双金,YYDS"
+        title="崩铁!启动"
+        backgroundImageUrl={backURl}
+        subTitle="一发入魂,十连双金,YYDS"
 
-        // activityConfig={{
-        //   style: {
-        //     boxShadow: '0px 0px 8px rgba(0, 0, 0, 0.2)',
-        //     color: token.colorTextHeading,
-        //     borderRadius: 8,
-        //     backgroundColor: 'rgba(255,255,255,0.25)',
-        //     backdropFilter: 'blur(4px)',
-        //   },
-        //   action: (
-        //     <Button
-        //       size="large"
-        //       style={{
-        //         borderRadius: 20,
-        //         background: token.colorBgElevated,
-        //         color: token.colorPrimary,
-        //         width: 120,
-        //       }}
-        //     >
-        //       去看看
-        //     </Button>
-        //   ),
-        // }}
+        activityConfig={{
+          style: {
+            boxShadow: '0px 0px 8px rgba(0, 0, 0, 0.2)',
+            color: token.colorTextHeading,
+            borderRadius: 8,
+            backgroundColor: 'rgba(255,255,255,0.25)',
+            backdropFilter: 'blur(4px)',
+          },
+          action: (
+            <Button
+              size="large"
+              style={{
+                borderRadius: 20,
+                background: token.colorBgElevated,
+                color: token.colorPrimary,
+                width: 120,
+              }}
+            >
+              去看看
+            </Button>
+          ),
+        }}
         actions={
           <div
             style={{
@@ -151,8 +151,8 @@ const Page = () => {
                   />
                 ),
               }}
-              placeholder={'用户名: sanyueqi'}
-              initialValue={'sanyueqi'}
+              placeholder={'用户名: nezha'}
+              initialValue={'nezha'}
               rules={[
                 {
                   required: true,
@@ -173,8 +173,8 @@ const Page = () => {
                   />
                 ),
               }}
-              placeholder={'密码: sanyueqi666'}
-              initialValue={'sanyueqi666'}
+              placeholder={'密码: nezha123'}
+              initialValue={'nezha123'}
               rules={[
                 {
                   required: true,

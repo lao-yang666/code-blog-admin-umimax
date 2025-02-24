@@ -278,6 +278,5 @@ export const randomTagColor = () => {
   const colors = ['magenta', 'red', 'volcano', 'orange', 'gold', 'lime', 'green', 'blue', 'geekblue', 'purple']
 
   const color = sample(colors);
-  console.log(color,'color')
   return color;
 }

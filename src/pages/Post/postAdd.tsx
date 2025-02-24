@@ -50,8 +50,8 @@ const PostAdd: React.FC<unknown> = () => {
   }
 
   const handleBack = () => {
-    console.log('====================', '返回');
-    history.go(-1);
+    history.back();
+    window.history.back();
   }
 
   const handlePub = async () => {
@@ -71,9 +71,9 @@ const PostAdd: React.FC<unknown> = () => {
         published: true, postId: postDetailId ? Number(postDetailId) : undefined,
       });
       hide();
-      message.success(`${btnText}成功`);
-      handleBack();
+      await message.success(`${btnText}成功`);
       socket.emit('addPost', { postId: Number(postId), title });
+      handleBack();
     } catch (error) {
       hide();
       message.error(`${btnText}失败请重试！`);

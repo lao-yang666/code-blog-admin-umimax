@@ -135,9 +135,9 @@ const TableList: React.FC<unknown> = () => {
       initialValue: currentRecord?.effect_form,
       hideInSearch: true,
       valueEnum: {
-        '0': { text: '隐藏', status: '藏' },
-        '1': { text: '禁用', status: '禁用' },
-        '2': { text: '启用', status: '启用' },
+        '0': { text: '隐藏按钮', status: '隐藏按钮' },
+        '1': { text: '置灰按钮', status: '置灰按钮' },
+        '2': { text: '启用按钮', status: '启用按钮' },
       },
       formItemProps: {
         rules: [

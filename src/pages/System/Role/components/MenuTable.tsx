@@ -30,7 +30,7 @@ const App: React.FC<PropsWithChildren<MenuTableProps>> = (props) => {
       title: '作用形式',
       dataIndex: 'effect_form',
       key: 'effect_form',
-      render: (_, record) => record?.effect_form?.replace('0', '隐藏').replace('1', '禁止').replace('2', '显示'),
+      render: (_, record) => record?.effect_form?.replace('0', '隐藏按钮').replace('1', '置灰按钮').replace('2', '启用按钮'),
     },
     {
       title: '所属菜单名称',

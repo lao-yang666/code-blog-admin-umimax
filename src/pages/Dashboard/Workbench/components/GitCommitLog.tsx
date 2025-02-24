@@ -11,9 +11,13 @@ import { Card, Space, Timeline, Typography } from 'antd'
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime';
 import { FC } from 'react'
-
+import styled from 'styled-components'
 import { isSuccess } from '@/utils'
-
+const TimeLineBox = styled(Timeline)`
+  && .ant-timeline-item {
+    padding-bottom: 13px !important;
+  }
+`;
 const { Text } = Typography;
 
 const GitCommitLog: FC = () => {
@@ -35,7 +39,7 @@ const GitCommitLog: FC = () => {
     })
   return (
     <Card title='更新日志'>
-      <Timeline style={{ marginTop: '20px' }}
+      <TimeLineBox style={{ marginTop: '10px' }}
         items={
           commitList?.map((item) => {
             return {

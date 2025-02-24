@@ -36,6 +36,12 @@ export default {
       exact: true,
     },
     {
+      path: '/technical-document/api',
+      name: 'api',
+      component: './TechnicalDocument/Api',
+      exact: true,
+    },
+    {
       path: 'https://prisma.org.cn/',
       name: 'prisma',
     },

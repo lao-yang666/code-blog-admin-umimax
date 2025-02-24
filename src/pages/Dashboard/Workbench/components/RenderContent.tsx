@@ -76,13 +76,13 @@ const RenderContent: FC = () => {
           <Space size="large">
             <Statistic title="关注" value={statisticData?.followerNum} />
             <Statistic title="粉丝" value={statisticData?.fensNum} />
-            <Statistic title="获赞" value={statisticData?.likeNum} />
+            <Statistic title="获赞" value={statisticData?.likeNum ?? 0} />
             <Statistic title="收藏" value={statisticData?.collectPostNum} />
             <Statistic title="喜欢" value={statisticData?.likePostNum} />
             <Statistic title="评论" value={statisticData?.commentNum} />
             <Statistic title="积分" value={statisticData?.sorce} />
             <Statistic title="排名" value={statisticData?.sortNum} />
-            <Statistic title="访问" value={statisticData?.viewNum} />
+            <Statistic title="访问" value={statisticData?.viewNum ?? 0} />
           </Space>
         </Col>
       </Row>
