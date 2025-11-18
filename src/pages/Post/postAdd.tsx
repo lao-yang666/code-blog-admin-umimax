@@ -151,7 +151,7 @@ const PostAdd: React.FC<unknown> = () => {
           <Button size='large' onClick={handlePub} type='primary'>{btnText}</Button>
         </ButtonBox>
       </Div>
-      <MdEditor value={mdValue} onChange={(val: string) => { handleChangeValue(val); }} onBack={handleBack}></MdEditor>
+      <MdEditor value={mdValue} onChange={(val: string) => { handleChangeValue(val); }} onBack={handleBack} onSave={handleDraftSave}></MdEditor>
     </div>
   )
 }

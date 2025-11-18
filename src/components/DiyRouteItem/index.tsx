@@ -8,6 +8,7 @@ const loopMenuItem = (menus: API.Menu[], pId: number | string | undefined): Dyna
   return menus.flatMap((item): any => {
     let Component: React.ComponentType<any> | null = null;
     if (item.component) {
+      console.log(item.component,'==item.component==')
       // 防止配置了路由，但本地暂未添加对应的页面，产生的错误
       Component = React.lazy(() => new Promise((resolve) => {
         import(`@/pages${item.component}`)

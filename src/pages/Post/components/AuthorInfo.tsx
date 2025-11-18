@@ -57,7 +57,7 @@ const AuthorInfo: FC<{ post: API.Post }> = (props) => {
   }, [post.author?.id])
   return (
     <>
-      <ToolButton change={refresh}></ToolButton>
+      {/* <ToolButton change={refresh}></ToolButton> */}
       <Card>
         <Flex style={{ marginBottom: 10 }} vertical={false} align='center'>
           <Avatar src={post.author?.avatar_url} size={80} />

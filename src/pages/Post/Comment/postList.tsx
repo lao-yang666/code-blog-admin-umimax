@@ -1,6 +1,6 @@
 import { Space, Tag } from 'antd';
 import { ProList } from '@ant-design/pro-components';
-import { isEqual } from 'lodash';
+import { isEqual } from 'lodash-es';
 import React, { PropsWithChildren } from 'react';
 const PostList: React.FC<{ onPostClick: Function, postList: API.Post[], loading: boolean }> = (props) => {
   const { onPostClick, postList, loading } = props

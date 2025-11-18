@@ -20,7 +20,7 @@ export default [
     component: './Login',
   },
   // tag,
-  // msg
+  // msg,
   // personalCenter,
   // technicalDocument,
   // dashboard,
@@ -30,12 +30,12 @@ export default [
     path: '/',
     redirect: '/home',
   },
-  // {
-  //   path: '/home',
-  //   component: './Dashboard/Workbench',
-  //   access: 'adminRouteFilter',
-  //   key:'xxx'
-  // },
+  {
+    path: '/home',
+    component: './Dashboard/Workbench',
+    access: 'adminRouteFilter',
+    key:'xxx'
+  },
   {
     path: '*',
     layout: false,

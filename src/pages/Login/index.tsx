@@ -151,8 +151,8 @@ const Page = () => {
                   />
                 ),
               }}
-              placeholder={'用户名: nezha'}
-              initialValue={'nezha'}
+              placeholder={'用户名: zhangsan'}
+              initialValue={'zhangsan'}
               rules={[
                 {
                   required: true,
@@ -173,8 +173,8 @@ const Page = () => {
                   />
                 ),
               }}
-              placeholder={'密码: nezha123'}
-              initialValue={'nezha123'}
+              placeholder={'密码: zhangsan123'}
+              initialValue={'zhangsan123'}
               rules={[
                 {
                   required: true,

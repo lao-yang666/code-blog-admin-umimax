@@ -7,10 +7,10 @@ import math from '@bytemd/plugin-math'
 import medium from '@bytemd/plugin-medium-zoom'
 import mermaid from '@bytemd/plugin-mermaid'
 import { Viewer } from '@bytemd/react'
-import highlightTheme from '@ziuchen/bytemd-plugin-highlight-theme'
-import hls from '@ziuchen/bytemd-plugin-highlight-theme/dist/highlights.json'
-import markdownTheme from '@ziuchen/bytemd-plugin-markdown-theme'
-import themes from '@ziuchen/bytemd-plugin-markdown-theme/dist/themes.json'
+import themes from './plugins/themes.json'
+import highlights from './plugins/highlights.json'
+import mdThemePlugin from './plugins/plugin-md-theme'
+import highlightThemePlugin from './plugins/plugin-highlight-theme'
 import React from 'react'
 const MdViewer: React.FC<any> = ({ value }) => {
   const plugins = [
@@ -22,11 +22,11 @@ const MdViewer: React.FC<any> = ({ value }) => {
     highlight(),
     medium(),
     frontmatter(),
-    markdownTheme({
-      themes: themes,
+    mdThemePlugin({
+      themes: themes
     }),
-    highlightTheme({
-      highlights: hls,
+    highlightThemePlugin({
+      highlights: highlights
     }),
   ]
   return (

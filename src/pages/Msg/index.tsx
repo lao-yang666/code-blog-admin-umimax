@@ -329,7 +329,7 @@ const TableList: React.FC<unknown> = () => {
         columns={formColumns}
       />
       <DiyForm
-        title={tableAction === 'edit' ? '编辑用户' : '新增用户'}
+        title={tableAction === 'edit' ? '编辑消息' : '新增消息'}
         modalVisible={modalVisible}
         onCancel={() => handleModalVisible(false)}>
         <ProTable<API.Msg>

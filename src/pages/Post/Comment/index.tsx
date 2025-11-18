@@ -8,7 +8,7 @@ import {
 import { useModel } from '@umijs/max';
 import { Drawer, Switch, Tag, message, Button, Col, Row } from 'antd';
 import React, { useEffect, useRef, useState } from 'react';
-import { get } from 'lodash';
+import { get } from 'lodash-es';
 import AccessButton from '@/components/AccessButton';
 import DiyForm from '@/components/DiyForm';
 import services from '@/services/blog';

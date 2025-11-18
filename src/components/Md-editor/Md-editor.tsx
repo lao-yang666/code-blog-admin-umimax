@@ -13,17 +13,14 @@ import medium from '@bytemd/plugin-medium-zoom'
 import mermaid from '@bytemd/plugin-mermaid'
 import mermaid_zh from '@bytemd/plugin-mermaid/locales/zh_Hans.json'
 import { Editor } from '@bytemd/react'
-import highlightTheme from '@ziuchen/bytemd-plugin-highlight-theme'
-import hls from '@ziuchen/bytemd-plugin-highlight-theme/dist/highlights.json'
-import highlightTheme_zh from '@ziuchen/bytemd-plugin-highlight-theme/locales/zh_Hans.json'
-import markdownTheme from '@ziuchen/bytemd-plugin-markdown-theme'
-import themes from '@ziuchen/bytemd-plugin-markdown-theme/dist/themes.json'
-import markdownTheme_zh from '@ziuchen/bytemd-plugin-markdown-theme/locales/zh_Hans.json'
-import zhHans from 'bytemd/locales/zh_Hans.json'
+// import zhHans from 'bytemd/locales/zh_Hans.json'
 import React from 'react'
-
+import themes from './plugins/themes.json'
+import highlights from './plugins/highlights.json'
 import backPlugin from './plugins/plugin-back'
 import savePlugin from './plugins/plugin-save'
+import mdThemePlugin from './plugins/plugin-md-theme'
+import highlightThemePlugin from './plugins/plugin-highlight-theme'
 const MdEditor: React.FC<any> = ({ value, onChange, onBack, onSave }) => {
   const plugins = [
     gfm({ locale: gfm_zh }),
@@ -34,13 +31,17 @@ const MdEditor: React.FC<any> = ({ value, onChange, onBack, onSave }) => {
     medium(),
     mermaid({ locale: mermaid_zh }),
     frontmatter(),
-    markdownTheme({
+    mdThemePlugin({
       themes: themes,
-      locale: markdownTheme_zh
+      locale: {
+        "markdownTheme": "Markdown主题"
+      }
     }),
-    highlightTheme({
-      highlights: hls,
-      locale: highlightTheme_zh
+    highlightThemePlugin({
+      highlights: highlights,
+      locale: {
+        "highlightTheme": "代码高亮主题"
+      }
     }),
     savePlugin(onSave),
     backPlugin(onBack),
@@ -48,7 +49,6 @@ const MdEditor: React.FC<any> = ({ value, onChange, onBack, onSave }) => {
   ]
   return (
     <Editor
-      locale={zhHans}
       value={value}
       plugins={plugins}
       onChange={(v) => {

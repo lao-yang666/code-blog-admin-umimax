@@ -3,6 +3,7 @@ import MoreArticle from './components/MoreArticles';
 import RelatedRecommend from './components/RelatedRecommend';
 import AuthorInfo from './components/AuthorInfo';
 import services from '@/services/blog';
+import ToolButton from './components/ToolButton'
 import './index.less';
 const { postControllerGetPostById: getPostDetail } =
   services.wenzhangguanli;
@@ -10,7 +11,7 @@ import { useSearchParams } from '@umijs/max';
 import { Col, Row, Skeleton } from 'antd';
 import { useState } from 'react';
 import { useRequest } from 'ahooks';
-import { get } from 'lodash';
+import { get } from 'lodash-es';
 import { PostContext } from "@/contexts/postContext";
 const PostAdd: React.FC<unknown> = () => {
   const [mdValue, handleChangeValue] = useState<string>('');
@@ -31,6 +32,7 @@ const PostAdd: React.FC<unknown> = () => {
         getPostDetail: refresh,
       }
     }>
+      {data?.id ? <ToolButton change={refresh} post={data}></ToolButton> : null}
       <Row className='markdown-main'>
         <Col span={15} className='markdown-container' offset={3}>
           <MdViewer value={mdValue} style={{ width: '1200px' }} ></MdViewer>

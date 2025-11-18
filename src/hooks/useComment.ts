@@ -5,7 +5,7 @@ import {
   commentControllerGetSelCommentList as getCommentList,
   modifyCommentStatus as updateComment,
 } from '@/services/blog/comment'
-import { get } from 'lodash';
+import { get } from 'lodash-es';
 import { message } from 'antd';
 import { useSearchParams } from '@umijs/max';
 import { useEffect, useState } from 'react';

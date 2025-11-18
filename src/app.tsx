@@ -30,10 +30,6 @@ import umiRequest from '@/utils/umiRequest'; // umi-request 请求封装
 import defaultSettings from '../config/defaultSettings'; // 全局默认配置
 import Locales from '../src/locales'; // 全局多语言配置
 import loopMenuItem from './components/DiyRouteItem';
-
-/**
- * @see  https://umijs.org/zh-CN/plugins/plugin-initial-state
- * */
 export async function getInitialState() {
   const userInfo = getSessionStorageItem<API.User>('userInfo') ?? undefined;
   const token = getToken() ?? undefined;

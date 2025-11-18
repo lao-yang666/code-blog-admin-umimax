@@ -30,7 +30,8 @@ export default function access(initialState: InitialStateTypes | undefined) {
     menuAccess,
     // 判断是否有权限访问菜单
     adminRouteFilter: (route: any) => {
-      return menuViewIds?.includes(route.menu_id)
+      return true
+      // return menuViewIds?.includes(route.menu_id)
     },
   };
 }
